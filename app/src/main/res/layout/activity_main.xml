@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/ivAppImage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/alto_imagen_pantalla_inicio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/imagengenerica" />
+
+    <LinearLayout
+        android:id="@+id/llButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/margen_horizontal_botones_inicio"
+        android:layout_marginRight="@dimen/margen_horizontal_botones_inicio"
+        android:layout_marginTop="@dimen/margen_componentes_inicio"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/ivAppImage"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <Button
+            android:id="@+id/btnJugador"
+            android:text="@string/common_jugador"
+            style="@style/startScreenButton"
+            android:layout_marginRight="@dimen/espacio_botones_inicio_ll"/>
+
+        <Button
+            android:id="@+id/btnDelegado"
+            android:text="@string/common_delegado"
+            style="@style/startScreenButton"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnAdm"
+        style="@style/startScreenButton"
+        android:layout_marginTop="@dimen/margen_componentes_inicio"
+        android:text="@string/common_administrador"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llButtons"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

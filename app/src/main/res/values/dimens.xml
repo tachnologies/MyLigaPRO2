@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- cosas comunes -->
+    <dimen name="common_ancho_pantalla">320dp</dimen>
+
+    <dimen name="common_logo_chiquito">55dp</dimen>
+
+    <dimen name="common_tamanyo_titulo">30sp</dimen>
+    <dimen name="common_tamanyo_subtitulo">20sp</dimen>
+    <dimen name="common_tamanyo_subtitulo_chico">15sp</dimen>
+    <dimen name="common_tamanyo_texto_menu">15sp</dimen>
+    <dimen name="common_espacio_subtitulo_listados">50dp</dimen>
+    <dimen name="common_espacio_titulo_listados">60dp</dimen>
+    <dimen name="common_margen_chiquito">4dp</dimen>
+    <dimen name="common_tamanyo_img">40dp</dimen>
+    <dimen name="common_margen_titulos">10dp</dimen>
+    <dimen name="common_margen_mediano">30dp</dimen>
+    <dimen name="common_espacio_doble_titulo_listados">90dp</dimen>
+
+    <!-- pantalla de inicio -->
+    <dimen name="ancho_boton_pantalla_inicio">150dp</dimen>
+    <dimen name="alto_boton_pantalla_inicio">80dp</dimen>
+
+    <dimen name="alto_imagen_pantalla_inicio">270dp</dimen>
+    <dimen name="margen_componentes_inicio">20dp</dimen>
+    <dimen name="espacio_botones_inicio_ll">10dp</dimen>
+    <dimen name="margen_horizontal_botones_inicio">10dp</dimen>
+
+    <!-- pantalla de login -->
+    <dimen name="common_padding_chico">4dp</dimen>
+    <dimen name="tamanyo_texto_mensaje_login">28sp</dimen>
+
+    <!-- pantalla alta cancha -->
+    <dimen name="alta_cancha_mapa_mdpi">300dp</dimen>
+    <dimen name="alta_cancha_card_corner_radius">20dp</dimen>
+    <dimen name="tamanyo_icono_mapa">60dp</dimen>
+    <dimen name="margen_icono_mapa">50dp</dimen>
+    <dimen name="item_cancha_liga_alto">130dp</dimen>
+    <dimen name="item_lista_text_padding">4dp</dimen>
+
+    <!-- pantalla listado canchas -->
+    <!-- pantalla nuevo equipo -->
+    <dimen name="nuevo_equipo_alto_img">250dp</dimen>
+    <dimen name="nuevo_equipo_boton_guardar_ancho">100dp</dimen>
+    <dimen name="nuevo_equipo_boton_guardar_alto">50dp</dimen>
+    <!-- /pantalla nuevo equipo -->
+
+    <dimen name="nuevo_jugador_alto_img">175dp</dimen>
+</resources>

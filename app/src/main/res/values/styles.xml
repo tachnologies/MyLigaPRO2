@@ -1,0 +1,88 @@
+<resources>
+    <!-- Base application theme.-->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here.-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Buttons pantalla inicio -->
+    <style name="startScreenButton">
+        <item name="android:layout_width">@dimen/ancho_boton_pantalla_inicio</item>
+        <item name="android:layout_height">@dimen/alto_boton_pantalla_inicio</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:background">@drawable/boton_redondo</item>
+        <item name="android:textColor">@color/blanco</item>
+    </style>
+
+    <style name="botonGuardar">
+        <item name="android:layout_width">@dimen/nuevo_equipo_boton_guardar_ancho</item>
+        <item name="android:layout_height">@dimen/nuevo_equipo_boton_guardar_alto</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:background">@drawable/boton_redondo</item>
+        <item name="android:textColor">@color/blanco</item>
+    </style>
+
+    <style name="botonTercero">
+        <item name="android:layout_width">@dimen/nuevo_equipo_boton_guardar_ancho</item>
+        <item name="android:layout_height">@dimen/nuevo_equipo_boton_guardar_alto</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:background">@drawable/boton_ternario_redondo</item>
+        <item name="android:textColor">@color/blanco</item>
+    </style>
+
+    <style name="botonCancelar">
+        <item name="android:layout_width">@dimen/nuevo_equipo_boton_guardar_ancho</item>
+        <item name="android:layout_height">@dimen/nuevo_equipo_boton_guardar_alto</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:background">@drawable/boton_cancelar_redondo</item>
+        <item name="android:textColor">@color/blanco</item>
+    </style>
+
+    <style name="tituloPantalla">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/common_tamanyo_titulo</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginLeft">@dimen/common_margen_titulos</item>
+        <item name="android:layout_marginRight">@dimen/common_margen_titulos</item>
+    </style>
+
+    <style name="subtituloPantalla">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/common_tamanyo_subtitulo</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginLeft">@dimen/common_margen_titulos</item>
+        <item name="android:layout_marginRight">@dimen/common_margen_titulos</item>
+    </style>
+
+    <style name="subtituloChicoPantalla">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/common_tamanyo_subtitulo_chico</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="listadoMenu">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/common_tamanyo_texto_menu</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.ImageViewButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/common_margen_chiquito</item>
+    </style>
+
+
+</resources>

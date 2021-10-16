@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="maxLongitud_nombre">150</integer>
+    <integer name="columnas_listado">3</integer>
+    <integer name="columnas_menu">2</integer>
+
+    <integer name="nuevo_equipo_max_longitud_nombre">25</integer>
+    <integer name="common_max_longitud_nombre_jugador">30</integer>
+
+</resources>

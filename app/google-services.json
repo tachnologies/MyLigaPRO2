@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "496580116849",
+    "project_id": "my-liga-pro",
+    "storage_bucket": "my-liga-pro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496580116849:android:8e35bd09fd1c131feff6d0",
+        "android_client_info": {
+          "package_name": "com.tachnologies.myligapro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "496580116849-p4niq6dujvqh5tc64377oi066bloonno.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tachnologies.myligapro",
+            "certificate_hash": "62a1701f254861efb6216a72cd120c96d9659e88"
+          }
+        },
+        {
+          "client_id": "496580116849-ll9kdoctpilebnncb0lb7spj589k3o32.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMeaLfzZF0Rp7RyBl5QjGndxFCFaCt06E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "496580116849-ll9kdoctpilebnncb0lb7spj589k3o32.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

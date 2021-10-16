@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ladas" >
+        <item>🇦🇷 +54</item>
+        <item>🇧🇿 +501</item>
+        <item>🇧🇴 +591</item>
+        <item>🇧🇷 +55</item>
+        <item>🇨🇦 +1</item>
+        <item>🇨🇱 +56</item>
+        <item>🇨🇴 +57</item>
+        <item>🇨🇷 +506</item>
+        <item>🇪🇨 +593</item>
+        <item>🇸🇻 +503</item>
+        <item>🇭🇳 +504</item>
+        <item>🇲🇽 +52</item>
+        <item>🇵🇦 +507</item>
+        <item>🇵🇾 +595</item>
+        <item>🇵🇪 +51</item>
+        <item>🇪🇸 +34</item>
+        <item>🇺🇸 +1</item>
+        <item>🇺🇾 +598</item>
+        <item>🇻🇪 +58</item>
+    </string-array>
+
+    <string-array name="ladasValues" >
+        <item>+54</item>
+        <item>+501</item>
+        <item>+591</item>
+        <item>+55</item>
+        <item>+1</item>
+        <item>+56</item>
+        <item>+57</item>
+        <item>+506</item>
+        <item>+593</item>
+        <item>+503</item>
+        <item>+504</item>
+        <item>+52</item>
+        <item>+507</item>
+        <item>+595</item>
+        <item>+51</item>
+        <item>+34</item>
+        <item>+1</item>
+        <item>+598</item>
+        <item>+58</item>
+    </string-array>
+
+
+</resources>

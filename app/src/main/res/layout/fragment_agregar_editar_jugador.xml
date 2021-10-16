@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".moduloAdminJugadores.agregarEditar.view.AgregarEditarJugadorFragment">
+
+    <ScrollView
+        android:id="@+id/sVMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/contentMain">
+
+            <TextView
+                android:id="@+id/tvTitulo"
+                style="@style/tituloPantalla"
+                android:text="@string/nuevo_jugador_titulo"
+                android:layout_marginTop="@dimen/common_margen_titulos"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgFoto"
+                android:layout_width="@dimen/nuevo_jugador_alto_img"
+                android:layout_height="@dimen/nuevo_jugador_alto_img"
+                android:layout_marginTop="@dimen/common_margen_titulos"
+                android:src="@drawable/jugador"
+                android:layout_gravity="center"/>
+
+            <LinearLayout
+                android:id="@+id/llBotones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/common_margen_chiquito"
+                android:layout_marginRight="@dimen/common_margen_mediano">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    style="@style/AppTheme.ImageViewButton"
+                    android:id="@+id/imgBorrarFoto"
+                    android:src="@drawable/ic_tache"/>
+                <androidx.appcompat.widget.AppCompatImageView
+                    style="@style/AppTheme.ImageViewButton"
+                    android:id="@+id/imgDesdeGaleria"
+                    android:src="@drawable/ic_upload"/>
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:counterMaxLength="@integer/common_max_longitud_nombre_jugador"
+                android:layout_marginTop="@dimen/common_margen_chiquito"
+                android:layout_marginLeft="@dimen/common_margen_mediano"
+                android:layout_marginRight="@dimen/common_margen_mediano"
+                app:counterEnabled="true">
+                <EditText
+                    android:id="@+id/etNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="@integer/common_max_longitud_nombre_jugador"
+                    android:hint="@string/hint_nombre_jugador"
+                    android:inputType="textPersonName|textCapSentences"
+                    android:imeOptions="actionNext"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilApellido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:counterMaxLength="@integer/common_max_longitud_nombre_jugador"
+                android:layout_marginTop="@dimen/common_margen_chiquito"
+                android:layout_marginLeft="@dimen/common_margen_mediano"
+                android:layout_marginRight="@dimen/common_margen_mediano"
+                app:counterEnabled="true">
+                <EditText
+                    android:id="@+id/etApellido"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="@integer/common_max_longitud_nombre_jugador"
+                    android:hint="@string/hint_apellido_jugador"
+                    android:inputType="textPersonName|textCapSentences"
+                    android:imeOptions="actionNext"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilApodo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:counterMaxLength="@integer/nuevo_equipo_max_longitud_nombre"
+                android:layout_marginTop="@dimen/common_margen_chiquito"
+                android:layout_marginLeft="@dimen/common_margen_mediano"
+                android:layout_marginRight="@dimen/common_margen_mediano"
+                app:counterEnabled="true">
+                <EditText
+                    android:id="@+id/etApodo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="@integer/nuevo_equipo_max_longitud_nombre"
+                    android:hint="@string/hint_apodo_jugador"
+                    android:inputType="textPersonName|textCapSentences"
+                    android:imeOptions="actionNext"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/llBotones2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/common_margen_chiquito"
+                android:layout_marginBottom="@dimen/common_margen_chiquito">
+
+                <Button
+                    android:id="@+id/btnCancelar"
+                    style="@style/botonTercero"
+                    android:text="@string/common_regresar"
+                    android:layout_marginRight="@dimen/margen_horizontal_botones_inicio"/>
+
+                <Button
+                    android:id="@+id/btnGuardar"
+                    style="@style/botonGuardar"
+                    android:text="@string/common_guardar"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnEliminar"
+                style="@style/botonCancelar"
+                android:text="@string/eliminar_jugador"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/common_margen_mediano"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

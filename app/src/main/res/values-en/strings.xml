@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My Liga PRO</string>
+
+    <!--********************************************* Textos Comunes *********************************************-->
+    <string name="common_jugador">PLAYER</string>
+    <string name="common_delegado">COACH</string>
+    <string name="common_administrador">LEAGUE ADMIN</string>
+    <string name="common_nombre">Name</string>
+    <string name="common_info_guardada">Information Saved</string>
+    <string name="common_usuario_nuevo">New User</string>
+    <string name="common_usuario_existe">Exist User</string>
+    <string name="common_error_ingrese_nombre">Ingrese el nombre</string>
+    <string name="common_error_subir_imagen">Error al guardar la imagen</string>
+    <string name="common_error_internet">Error en la conexi&#243;n de Internet</string>
+    <string name="common_error_no_permisos">No cuenta con los permisos para realizar esta operaci&#243;n</string>
+    <string name="common_error_desconectado">Error, se ha desconectado de Internet</string>
+    <string name="common_error_operacion">La operac&#243;n ha fallado intente mas tarde&#8230; de continuar contacte al proovedor</string>
+    <string name="common_ok">OK</string>
+    <string name="common_cancelar">Cancel</string>
+    <string name="common_cargando">Loading...</string>
+    <string name="common_item_param">%s</string>
+    <string name="common_liga">Liga: </string>
+    <string name="common_equipos">Equipos</string>
+    <string name="common_error_borrado">Error al borrar elemento</string>
+    <string name="error_servidor_estandar">Error del servidor por favor intente mas tarde</string>
+    <string name="common_guardar">Guardar</string>
+    <string name="common_regresar">Regresar</string>
+    <string name="common_borrar">Borrar</string>
+
+
+    <!--********************************************* /Textos Comunes *********************************************-->
+
+    <!--********************************************* Login *********************************************-->
+    <string name="mensaje_espera_login">\n\nPreparando todo&#8230;</string>
+    <string name="login_cargando">Cargando... \nEn caso que esta pantalla \nde carga dure mucho por \nfavor intente mas tarde</string>
+    <string name="login_mensaje_error">Imposible iniciar sesión, intente más tarde</string>
+    <string name="login_registrando_usuario">Usuario nuevo, registrando&#8230;></string>
+    <string name="login_error_respuesta">Error al recibir la respuesta del servicio</string>
+    <string name="mensaje_login_exitoso">Ha hecho login con &#233;xito</string>
+    <!--********************************************* /Login *********************************************-->
+
+    <!--********************************************* Alta Admin *********************************************-->
+    <string name="alta_admin_titulo"><b>Registro Administrador</b></string>
+    <string name="alta_admin_descripcion">Ingrese su nombre, pulse el bot&#243;n <b>Siguiente</b> para continuar y dar de alta su cancha.\nLa informaci&#243;n se guardar&#225; hasta registrar una liga</string>
+    <string name="alta_admin_nombre_adm">Ingrese su nombre</string>
+    <!--********************************************* /Alta Admin *********************************************-->
+
+    <!--********************************************* Alta Cancha *********************************************-->
+    <string name="alta_cancha_titulo"><b>Alta Cancha</b></string>
+    <string name="alta_cancha_nombre">Nombre de la cancha</string>
+    <string name="alta_cancha_cb_ubicacion">Agregar la ubicaci&#243;n de mi cancha</string>
+    <string name="alta_cancha_cb_fotos">Agregar la fotos de mi cancha</string>
+    <string name="alta_cancha_ubicacion_titulo">Ubicaci&#243;n de mi cancha</string>
+    <!--********************************************* /Alta Cancha *********************************************-->
+
+    <!--********************************************* ubicacion Cancha *********************************************-->
+    <string name="ubicacion_cancha_msje_permisos">Por favor activa tu Ubicaci&#243;n para continuar</string>
+    <string name="ubicacion_cancha_msje_boton_ok">Activar ubicaci&#243;n</string>
+    <string name="ubicacion_cancha_titulo_permisos_ubicacion">Activar ubicaci&#243;n</string>
+    <string name="ubicacion_cancha_texto_permisos_ubicacion">Activar ubicaci&#243;n</string>
+    <string name="ubicacion_cancha_titulo_confirmar_ubicacion">Confirmar Ubicaci&#243;n</string>
+    <string name="ubicacion_cancha_texto_confirmar_ubicacion">¿La ubicaci&#243;n seleccionada en el mapa es donde se encuentra situada la cancha?</string>
+
+    <!--********************************************* /ubicacion Cancha *********************************************-->
+
+    <!--********************************************* Alta Liga *********************************************-->
+    <string name="alta_liga_titulo">Alta Liga</string>
+    <string name="alta_liga_nombre">Nombre de la liga</string>
+    <string name="alta_liga_numero_jornadas">N&#250;mero de jornadas</string>
+    <string name="alta_liga_equipos_califican">Cuantos pasan directo a finales</string>
+    <string name="alta_liga_cb_repechaje">Hay repechaje</string>
+    <string name="alta_liga_equipos_repechaje">Cuantos van a repechaje</string>
+    <string name="alta_liga_empate_pt_extra">En caso de empate hay punto extra</string>
+    <string name="alta_liga_error_num_jornadas">Ingrese el n&#250;mero de jornadas</string>
+    <string name="alta_liga_error_num_equipos_liguilla">Ingrese el n&#250;mero de equipos que entran directo a liguilla</string>
+    <string name="alta_liga_error_num_equipos_repechaje">Ingrese el n&#250;mero de equipos que van a repechaje</string>
+    <string name="alta_liga_error_no_numero">Ingrese un valor n&#250;merico entero</string>
+    <!--********************************************* /Alta Liga *********************************************-->
+
+    <!--********************************************* Delegado Activity *********************************************-->
+    <string name="main_delegado_sin_equipos">Usted no cuenta con equipos para administrar, notifique al administrador de su liga para que sea dado de alta como delegado de su equipo con su n&#250;mero telef&#243;nico</string>
+
+
+    <!--********************************************* /Delegado Activity *********************************************-->
+
+    <!--********************************************* Listado Canchas-Ligas *********************************************-->
+    <string name="item_cancha_content">Cancha:</string>
+    <string name="item_liga_content">Liga:</string>
+    <string name="item_cancha_liga_data">%s</string>
+    <string name="common_mis_ligas">Mis Ligas</string>
+    <string name="common_mis_canchas">Mis Canchas</string>
+
+    <!--********************************************* Textos menus *********************************************-->
+    <string name="item_menu_decretos">Decretos</string>
+    <string name="item_menu_resultados">Resultados</string>
+    <string name="item_menu_tabla_gral">Tabla General</string>
+    <string name="item_menu_sancionados">Tabla Sancionados</string>
+    <string name="item_menu_goleo">Tabla Goleo</string>
+    <string name="item_menu_admins">Administradores</string>
+    <string name="item_menu_delegados">Delegados</string>
+    <string name="item_menu_equipos">Equipos</string>
+    <string name="item_menu_editar_liga">Editar Datos Liga</string>
+    <string name="item_menu_editar_cancha">Editar Datos Cancha</string>
+    <!--********************************************* /Textos menus ADM *********************************************-->
+
+    <!--********************************************* Equipos ADM *********************************************-->
+    <string name="equipos_adm_error_no_equipos">No hay equipos registrados en la liga, pulse el bot&#243;n + para agregar un nuevo equipo</string>
+    <string name="equipos_adm_borrar_equipo">Borrar Equipo</string>
+    <string name="equipos_adm_dialogo_borrar_equipo">¿Realmente desea eliminar el equipo %s, al realizar esto se borrara toda la informaci&#243;n del equipo?</string>
+    <string name="equipos_adm_equipo_no_existe">El equipo no existe</string>
+    <string name="equipos_adm_equipo_existe">El equipo existe</string>
+    <string name="equipos_adm_msje_borrando_equipo">Borrando equipo</string>
+
+    <string name="error_servidor_permisos">Error de permisos en servidor</string>
+
+
+    <!--********************************************* /Equipos ADM *********************************************-->
+
+    <!--********************************************* Nuevo Equipo *********************************************-->
+    <string name="nuevo_equipo_hint_nombre_equipo">Nombre del equipo</string>
+    <string name="nuevo_equipo_hint_cel_delegado">Celular Delegado</string>
+    <string name="nuevo_equipo_titulo">Nuevo equipo</string>
+    <string name="nuevo_equipo_error_sin_nombre">Ingrese el nombre del equipo</string>
+    <string name="nuevo_equipo_error_sin_nombre_delegado">Ingrese el nombre del delegado</string>
+    <string name="nuevo_equipo_error_sin_celular">Ingrese el n&#250;mero de celular del delegado</string>
+    <string name="nuevo_equipo_error_longitud_cel">El n&#250;mero de celular debe contener al menos 10 caracteres</string>
+    <string name="common_archivo_no_encontrado">Archivo no encontrado</string>
+    <string name="nuevo_equipo_guardado">Equipo Guardado</string>
+    <string name="nuevo_equipo_delegado">Delegado</string>
+    <string name="nuevo_equipo_hint_nombre_delegado">Nombre del delegado</string>
+    <string name="nuevo_equipo_nota_delegado"><u>Nota:</u> El n&#250;mero de celular anotado, sevir&#225; para crear una cuenta al delegado y pueda administrar su equipo</string>
+    <string name="nuevo_equipo_agregar_delegado">Agregar Delegado</string>
+    <string name="common_error_consulta_datos">Error al consultar los datos</string>
+    <string name="common_mis_equipos">Mis Equipos</string>
+
+
+    <!--********************************************* /Nuevo Equipo *********************************************-->
+</resources>

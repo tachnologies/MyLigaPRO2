@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".moduloAdm.nuevoEquipo.view.NuevoEquipoActivity">
+
+    <ScrollView
+        android:id="@+id/sVMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/contentMain">
+
+            <TextView
+                android:id="@+id/tvTitulo"
+                style="@style/tituloPantalla"
+                android:text="@string/nuevo_equipo_titulo"
+                android:layout_marginTop="@dimen/common_margen_titulos"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgFoto"
+                android:layout_width="@dimen/nuevo_equipo_alto_img"
+                android:layout_height="@dimen/nuevo_equipo_alto_img"
+                android:layout_marginTop="@dimen/common_margen_titulos"
+                android:src="@drawable/escudo_equipo"
+                android:layout_gravity="center"/>
+
+            <LinearLayout
+                android:id="@+id/llBotones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/common_margen_chiquito"
+                android:layout_marginRight="@dimen/common_margen_mediano">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    style="@style/AppTheme.ImageViewButton"
+                    android:id="@+id/imgBorrarFoto"
+                    android:src="@drawable/ic_tache"/>
+                <androidx.appcompat.widget.AppCompatImageView
+                    style="@style/AppTheme.ImageViewButton"
+                    android:id="@+id/imgDesdeGaleria"
+                    android:src="@drawable/ic_upload"/>
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:counterMaxLength="@integer/nuevo_equipo_max_longitud_nombre"
+                android:layout_marginTop="@dimen/common_margen_chiquito"
+                android:layout_marginLeft="@dimen/common_margen_mediano"
+                android:layout_marginRight="@dimen/common_margen_mediano"
+                app:counterEnabled="true">
+                <EditText
+                    android:id="@+id/etNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="@integer/nuevo_equipo_max_longitud_nombre"
+                    android:hint="@string/nuevo_equipo_hint_nombre_equipo"
+                    android:inputType="textPersonName|textCapSentences"
+                    android:imeOptions="actionNext"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/cbDelegado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nuevo_equipo_agregar_delegado"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/common_margen_chiquito"
+                android:layout_marginLeft="@dimen/common_margen_mediano"
+                android:layout_marginRight="@dimen/common_margen_mediano"
+                android:layout_weight="1"/>
+
+            <LinearLayout
+                android:id="@+id/llDelegado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/common_margen_titulos"
+                android:layout_marginLeft="@dimen/common_margen_mediano"
+                android:layout_marginRight="@dimen/common_margen_mediano"
+                android:visibility="gone">
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
+                    android:id="@+id/tvDelegado"
+                    style="@style/subtituloPantalla"
+                    android:layout_marginTop="@dimen/common_margen_titulos"
+                    android:text="@string/common_delegado"
+                    />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilNombreDelegado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:counterMaxLength="@integer/nuevo_equipo_max_longitud_nombre"
+                    app:counterEnabled="true"
+                    android:layout_marginTop="@dimen/common_margen_chiquito">
+                    <EditText
+                        android:id="@+id/etNombreDelegado"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="@integer/nuevo_equipo_max_longitud_nombre"
+                        android:hint="@string/nuevo_equipo_hint_nombre_delegado"
+                        android:inputType="textPersonName|textCapSentences"
+                        android:imeOptions="actionNext"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:id="@+id/llTelDelegado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/common_margen_chiquito">
+
+                    <Spinner
+                        android:id="@+id/spLadas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/ladas"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="@dimen/common_margen_chiquito"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilTelDelegado"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/etTelDelegado"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/nuevo_equipo_hint_cel_delegado"
+                            android:imeOptions="actionNext"
+                            android:inputType="phone"
+                            android:maxLength="@integer/nuevo_equipo_max_longitud_nombre" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvNota"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/common_margen_chiquito"
+                    android:text="@string/nuevo_equipo_nota_delegado"/>
+
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginTop="@dimen/common_margen_chiquito" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/llBotones2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/common_margen_mediano"
+                android:layout_marginBottom="@dimen/common_margen_mediano">
+
+                <Button
+                    android:id="@+id/btnCancelar"
+                    style="@style/botonCancelar"
+                    android:text="@string/common_regresar"
+                    android:layout_marginRight="@dimen/margen_horizontal_botones_inicio"/>
+
+                <Button
+                    android:id="@+id/btnGuardar"
+                    style="@style/botonGuardar"
+                    android:text="@string/common_guardar"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

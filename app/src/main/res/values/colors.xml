@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#43a047</color>
+    <color name="colorPrimaryDark">#59E694</color>
+    <color name="colorAccent">#025916</color>
+
+    <color name="primary_light">#76d275</color>
+
+    <color name="primary_text">#FFFFFF</color>
+    <color name="secondary_text">#0C936B</color>
+
+    <!-- Para lo del login Activity-->
+    <color name="verde_letras">#0C936B</color>
+    <color name="verde_pastel">#A6ECA8</color>
+    <color name="naranjita">#FFA726</color>
+    <color name="red_a700">#D50000</color>
+
+    <color name="blanco">#FFFFFF</color>
+
+</resources>
