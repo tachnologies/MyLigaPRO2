@@ -13,7 +13,6 @@ public class Equipo {
     private String nombre;
     private String urlFoto;
     private List<RefDelegadoAdm> delegados;
-    //private List<Jugador> jugadores;
     private Map<String, Jugador> jugadores;
 
     private String fechaAlta;

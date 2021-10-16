@@ -79,24 +79,16 @@ public class NuevoEquipoActivity extends AppCompatActivity implements NuevoEquip
     CheckBox cbDelegado;
     @BindView(R.id.llDelegado)
     LinearLayout llDelegado;
-    /**
-     * para obtener la lada del pais
-     */
+    /**para obtener la lada del pais*/
     private Set<String> mLadasSet;
     private SharedPreferences mSharedPreferences;
 
     private NuevoEquipoPresenter mPresenter;
-    /**
-     * para lo del gif
-     */
+    /**para lo del gif*/
     private CargandoDialog cargando;
-    /**
-     * para la foto del equipo
-     */
+    /**para la foto del equipo*/
     private Uri uriPhoto;
-    /**
-     * para el delegado
-     */
+    /**para el delegado*/
     private String nombreDelegado;
     private String celularDelegado;
     private Equipo equipoGuardar;
@@ -127,7 +119,6 @@ public class NuevoEquipoActivity extends AppCompatActivity implements NuevoEquip
     private void configSharedPreferences() {
         mSharedPreferences = getPreferences(Context.MODE_PRIVATE);
         mLadasSet = mSharedPreferences.getStringSet(Constantes.SP_LADAS, new HashSet<String>());
-        //showTopics();
     }
 
     @Override
@@ -266,16 +257,11 @@ public class NuevoEquipoActivity extends AppCompatActivity implements NuevoEquip
     }
 
     private void permisosGaleria() {
-        System.out.println("-------------------------- permisosGaleria");
-        //Activity activity = this.getActivity();
         mPresenter.checarPermisos(Manifest.permission.READ_EXTERNAL_STORAGE, Constantes.RP_STORAGE,
                 getBaseContext(), this);
     }
 
-    /**
-     * -------------------------------------- metodos NuevoEquipoView
-     */
-
+    /**-------------------------------------- metodos NuevoEquipoView*/
     @Override
     public void setImagen(Intent data) {
         Bundle bundle = data.getExtras();
@@ -331,7 +317,6 @@ public class NuevoEquipoActivity extends AppCompatActivity implements NuevoEquip
 
     @Override
     public void equipoAgregado() {
-        System.out.println("------------------------------- equipoAgregado");
         if (celularDelegado != null && !celularDelegado.isEmpty()) {
             guardarDelegado();
         } else {
@@ -344,7 +329,6 @@ public class NuevoEquipoActivity extends AppCompatActivity implements NuevoEquip
 
         List<RefEquipoDelegado> referenciasEquipos = delegado.getEquipos() == null ?
                 new ArrayList<RefEquipoDelegado>() : delegado.getEquipos();
-        //AdmSession mSession = AdmSession.getInstance();
 
         referenciasEquipos.add(new RefEquipoDelegado(mSession.getIdCanchaSel(),
                 mSession.getNombreCanchaSel(), mSession.getUrlLogoCanchaSel(),

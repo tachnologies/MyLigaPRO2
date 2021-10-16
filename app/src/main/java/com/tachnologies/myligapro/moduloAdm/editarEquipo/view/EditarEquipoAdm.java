@@ -67,8 +67,6 @@ public class EditarEquipoAdm extends AppCompatActivity implements EditarEquipoAd
     private CargandoDialog cargando;
     private EditarEquipoAdmPresenter mPresenter;
     private Equipo equipoEditar;
-    //private RefDelegadoAdm delegadoBDEquipo;
-
     /** para la foto del equipo*/
     private Uri uriPhoto;
 
@@ -150,7 +148,6 @@ public class EditarEquipoAdm extends AppCompatActivity implements EditarEquipoAd
 
         if (equipo.getDelegados() != null && equipo.getDelegados().size() > 0) {
             cbDelegado.setChecked(true);
-            //delegadoBDEquipo = equipo.getDelegados().get(0);
             String lada = equipo.getDelegados().get(0).getLada();
             String[] arrayLadas =  getResources().getStringArray(R.array.ladasValues);
             int index = -1;
@@ -235,13 +232,10 @@ public class EditarEquipoAdm extends AppCompatActivity implements EditarEquipoAd
 
     @Override
     public void guardarEquipo(String urlFotoEquipo) {
-        //System.out.println("-------------------------- guardarEquipo");
         equipoEditar.setUrlFoto(urlFotoEquipo);
-        //System.out.println("-------------------------- equipoEditar.getUrlFoto():" + equipoEditar.getUrlFoto());
         String nombreEquipo = etNombre.getText().toString().trim();
         equipoEditar.setNombre(nombreEquipo);
         uidDelegadoAnterior = "";
-        //System.out.println("-------------------------------- editoDelegado: " + editoDelegado);
         switch(editoDelegado){
             case 1:     //edito nombre
             case 2:     //cambio numero de telefono
@@ -300,9 +294,7 @@ public class EditarEquipoAdm extends AppCompatActivity implements EditarEquipoAd
                 agregarRefDelegado(equipoEditar.getUid(), equipoEditar.getDelegados().get(0).getUid());
                 break;
             default:
-                System.out.println("------------------------ default");
                 if(cbDelegado.isChecked()){
-                    System.out.println("------------------------ cbDelegado.isChecked()");
                     actualizarDelegado(equipoEditar.getDelegados().get(0).getUid());
                 }else{
                     finalGuardar();
@@ -311,7 +303,6 @@ public class EditarEquipoAdm extends AppCompatActivity implements EditarEquipoAd
     }
 
     public void actualizarDelegado(String uidDelegado) {
-        System.out.println("------------------------ actualizarDelegado");
         mPresenter.actualizarDelegado(uidDelegado, equipoEditar.getNombre(),
                 equipoEditar.getUrlFoto(), equipoEditar.getUid());
     }
@@ -353,16 +344,8 @@ public class EditarEquipoAdm extends AppCompatActivity implements EditarEquipoAd
     }
 
     public void subirFotoEquipo() {
-        System.out.println("-------------------------- subirFotoEquipo");
-        /**final String EquipoId = new SimpleDateFormat("ddMMyyyyHHmmssSSS", Locale.ROOT)
-                .format(new Date());*/
-
         mPresenter.subirEscudoEquipo(uriPhoto, equipoEditar.getUid());
     }
-
-    /**private void guardarDelegado() {
-        System.out.println("-------------------------- guardarDelegado");
-    }*/
 
     public boolean validar(){
         String nombreEquipo = etNombre.getText().toString().trim();
@@ -538,8 +521,6 @@ public class EditarEquipoAdm extends AppCompatActivity implements EditarEquipoAd
             llDelegado.setVisibility(View.VISIBLE);
             alpha = 1f;
         } else {
-            //etNombreDelegado.setText(Constantes.CADENA_VACIA);
-            //etTelDelegado.setText(Constantes.CADENA_VACIA);
             llDelegado.setVisibility(View.GONE);
         }
 

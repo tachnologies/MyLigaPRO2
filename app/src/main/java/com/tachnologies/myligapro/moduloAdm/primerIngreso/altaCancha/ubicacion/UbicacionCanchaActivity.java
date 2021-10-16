@@ -155,8 +155,6 @@ public class UbicacionCanchaActivity extends AppCompatActivity implements OnMapR
                     Geocoder geocoder = new Geocoder(UbicacionCanchaActivity.this);
                     mUbicacionLatLng = mMap.getCameraPosition().target;
                     List<Address> listaDirecciones = geocoder.getFromLocation(mUbicacionLatLng.latitude, mUbicacionLatLng.longitude, 1);
-                    //String ciudad = listaDirecciones.get(0).getLocality();
-                    //String pais = listaDirecciones.get(0).getCountryName();
                     String direccion = listaDirecciones.get(0).getAddressLine(0);
                     mUbicacion = direccion;
                     mAutocomplete.setText(direccion);
@@ -357,11 +355,6 @@ public class UbicacionCanchaActivity extends AppCompatActivity implements OnMapR
         bloquearPantalla();
         Intent intent = new Intent(this, AltaLigaActivity.class);
 
-        System.out.println("------------------------- irAltaLigaActivity: ");
-        System.out.println("------------------------- ubicacion cancha ");
-        System.out.println("------------------------- latitud: " + mUbicacionLatLng.latitude);
-        System.out.println("------------------------- longitud: " + mUbicacionLatLng.longitude);
-
         Ubicacion ubicacion = new Ubicacion();
         ubicacion.setLatitud(String.valueOf(mUbicacionLatLng.latitude));
         ubicacion.setLongitud(String.valueOf(mUbicacionLatLng.longitude));
@@ -370,8 +363,6 @@ public class UbicacionCanchaActivity extends AppCompatActivity implements OnMapR
         try{
             Geocoder geocoder = new Geocoder(UbicacionCanchaActivity.this);
             List<Address> listaDirecciones = geocoder.getFromLocation(mUbicacionLatLng.latitude, mUbicacionLatLng.longitude, 1);
-            //String ciudad = listaDirecciones.get(0).getLocality();
-            //String pais = listaDirecciones.get(0).getCountryName();
             String direccion = listaDirecciones.get(0).getAddressLine(0);
             cancha.setDireccion(direccion);
         }catch(Exception e){

@@ -137,37 +137,26 @@ public class EditarEquipoAdmPresenterClass implements EditarEquipoAdmPresenter{
     @Override
     public void actualizarDelegado(String uidDelegado, String nombreEquipo, String urlLogoEquipo,
                                    String uidEquipo){
-        System.out.println("------------------------ actualizarDelegado Presenter");
         buscarDelegado(uidDelegado, new BasicDelegadoCallback() {
             @Override
             public void onError(int typeEvent, int resMsg) {
-                System.out.println("------------------------ onError");
-                //switch(typeEvent){
-                  //  case Constantes.DELEGADO_NO_EXISTE:
-                    //    break;
-                    //default:
-                //}
+
             }
 
             @Override
             public void delegadoExistente(int typeEvent, UsuarioDelegado delegado) {
-                System.out.println("------------------------ delegadoExistente");
                 if(delegado.getEquipos() != null && !delegado.getEquipos().isEmpty()){
-                    System.out.println("------------------------ tiuene equipos");
                     int index =  getIndexEquipo(uidEquipo, delegado.getEquipos());
-                    System.out.println("------------------------ index: " + index);
                     if(index != -1){
                         delegado.getEquipos().get(index).setNombreEquipo(nombreEquipo);
                         delegado.getEquipos().get(index).setUrlLogoEquipo(urlLogoEquipo);
 
                         mInteractor.guardarDelegado(Constantes.DELEGADO_GUARDADO_EXITO, delegado);
                     }else{
-                        System.out.println("------------------------ no lo encontro");
                         mView.finalGuardar();
                     }
 
                 }else{
-                    System.out.println("------------------------ no tiene equipos");
                     mView.finalGuardar();
                 }
 
@@ -178,7 +167,6 @@ public class EditarEquipoAdmPresenterClass implements EditarEquipoAdmPresenter{
     @Override
     public void agregarRefDelegado(int respuestaExito, String uidDelegadoAgregar, String lada,
             RefEquipoDelegado referencia) {
-        //UsuarioDelegado delegado = new UsuarioDelegado();
         buscarDelegado(uidDelegadoAgregar, new BasicDelegadoCallback() {
             @Override
             public void onError(int typeEvent, int resMsg) {
@@ -267,13 +255,10 @@ public class EditarEquipoAdmPresenterClass implements EditarEquipoAdmPresenter{
                     mView.llenaInfoEquipo(equipo);
                     break;
                 case Constantes.ALTA_ESCUDO_EQUIPO_EXITOSA:
-                    //String uidEquipo = evento.getIdEquipo();
                     String urlEscudoEquipo = evento.getEquipo().getUrlFoto();
-                    //Equipo equipo = new Equipo(uidEquipo, urlEscudoEquipo);
                     mView.guardarEquipo(urlEscudoEquipo);
                     break;
                 case Constantes.DELEGADO_GUARDADO_EXITO:
-                    System.out.println("----------------------- DELEGADO_GUARDADO_EXITO");
                     mView.finalGuardar();
                     break;
                 case Constantes.EQUIPO_GUARDADO:

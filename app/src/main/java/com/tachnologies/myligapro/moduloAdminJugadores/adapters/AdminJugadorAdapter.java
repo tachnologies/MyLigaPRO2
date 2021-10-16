@@ -15,7 +15,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.tachnologies.myligapro.R;
 import com.tachnologies.myligapro.common.pojo.Jugador;
-import com.tachnologies.myligapro.moduloAdm.jugadoresAdm.adapters.OnItemClickListener;
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;

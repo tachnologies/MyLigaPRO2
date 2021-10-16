@@ -50,7 +50,7 @@ public class CargandoDialog extends DialogFragment {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.setCanceledOnTouchOutside(false);
         dialog.setCancelable(false);
-        //Glide.with(this).asGif().load(R.drawable.balon2).into(ivCargando);
+
         Glide.with(this).asGif().load(R.drawable.balon2)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(ivCargando);

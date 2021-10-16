@@ -7,7 +7,7 @@ public interface AdministrarJugadoresPresenter {
     void onDestroy();
     void consultarEquipo(String uidEquipo, String uidCuenta, String uidCancha, String uidLiga);
     void eliminarJugador(String uidCuenta, String uidCancha, String uidLiga, String uidEquipo,
-                         String uidJugador);
+        String uidJugador);
     void eliminarFotoJugador(String urlFotoJugador);
     void onEventListener(EditarEquipoEvent evento);
 }

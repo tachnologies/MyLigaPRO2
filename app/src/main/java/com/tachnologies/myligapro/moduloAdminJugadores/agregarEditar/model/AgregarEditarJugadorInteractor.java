@@ -1,7 +1,6 @@
 package com.tachnologies.myligapro.moduloAdminJugadores.agregarEditar.model;
 
 import android.net.Uri;
-
 import com.tachnologies.myligapro.common.pojo.Jugador;
 
 public interface AgregarEditarJugadorInteractor {

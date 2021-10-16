@@ -36,7 +36,6 @@ public class ItemCanchaListadoAdapter extends RecyclerView.Adapter<ItemCanchaLis
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cancha_liga, parent, false);
         context = parent.getContext();
-
         return new ViewHolder(view);
     }
 
@@ -53,8 +52,6 @@ public class ItemCanchaListadoAdapter extends RecyclerView.Adapter<ItemCanchaLis
         RequestOptions options = new RequestOptions()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .centerCrop();
-
-        //String asd = R.drawable.escudo_generico;
 
         Glide.with(context)
                 .load(R.drawable.campo_2)

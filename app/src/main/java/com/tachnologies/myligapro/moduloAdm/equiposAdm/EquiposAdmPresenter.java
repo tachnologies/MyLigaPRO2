@@ -1,6 +1,5 @@
 package com.tachnologies.myligapro.moduloAdm.equiposAdm;
 
-import com.tachnologies.myligapro.common.pojo.Equipo;
 import com.tachnologies.myligapro.moduloAdm.equiposAdm.events.EquiposAdmEvent;
 
 public interface EquiposAdmPresenter {

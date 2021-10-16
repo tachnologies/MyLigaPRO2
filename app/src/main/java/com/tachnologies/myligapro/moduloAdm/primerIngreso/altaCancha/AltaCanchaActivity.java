@@ -15,7 +15,6 @@ import com.tachnologies.myligapro.common.animaciones.cargando.CargandoDialog;
 import com.tachnologies.myligapro.common.pojo.Cancha;
 import com.tachnologies.myligapro.common.pojo.UsuarioAdmin;
 import com.tachnologies.myligapro.common.utils.Constantes;
-import com.tachnologies.myligapro.common.utils.Utilidades;
 import com.tachnologies.myligapro.moduloAdm.primerIngreso.altaCancha.ubicacion.UbicacionCanchaActivity;
 import com.tachnologies.myligapro.moduloAdm.primerIngreso.altaLiga.AltaLigaActivity;
 

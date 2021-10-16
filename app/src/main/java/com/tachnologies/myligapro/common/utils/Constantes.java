@@ -98,7 +98,6 @@ public class Constantes {
     public static final int ERROR_SERVIDOR = 100;
     public static final int ERROR_SUBIR_IMAGEN = 101;
     public static final int ERROR_BORRADO = 102;
-    //public static final int ERROR_VALOR_MAXIMO = 101;
 
     /** Constantes listado canchas*/
 

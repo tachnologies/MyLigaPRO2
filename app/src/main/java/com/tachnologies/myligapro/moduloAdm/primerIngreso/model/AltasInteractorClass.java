@@ -34,7 +34,6 @@ public class AltasInteractorClass implements AltasInteractor{
 
     @Override
     public void altaUsuarioAdm(UsuarioAdmin admin) {
-
         mDatabase.altaAdminLiga(admin, new BasicErrorEventCallback() {
             @Override
             public void onSuccess() {

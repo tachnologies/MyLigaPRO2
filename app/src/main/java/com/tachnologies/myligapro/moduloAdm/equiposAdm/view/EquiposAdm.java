@@ -70,7 +70,6 @@ public class EquiposAdm extends AppCompatActivity implements OnItemClickListener
             btnNuevo.setVisibility(View.GONE);
         }
 
-
         mPresenter = new EquiposAdmPresenterClass(this);
         mPresenter.onCreate();
 
@@ -90,6 +89,7 @@ public class EquiposAdm extends AppCompatActivity implements OnItemClickListener
     protected void onPause() {
         super.onPause();
         mPresenter.onPause();
+        mAdapter.vaciarListado();
     }
 
     @Override
@@ -114,10 +114,7 @@ public class EquiposAdm extends AppCompatActivity implements OnItemClickListener
         Intent intent = new Intent(this, NuevoEquipoActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-        //hideProgress();
         finish();
-        //new NuevoEquipoActivity().show(getSupportFragmentManager(), getString(R.string.nuevo_equipo_titulo));
-
     }
 
     /*** del view*/

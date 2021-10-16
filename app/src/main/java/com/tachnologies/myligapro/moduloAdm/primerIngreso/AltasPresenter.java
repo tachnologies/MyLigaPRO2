@@ -11,6 +11,5 @@ public interface AltasPresenter {
     void onDestroy();
     void altaCuenta(Cuenta cuenta);
     void altaUsuarioAdm(UsuarioAdmin admin);
-
     void onEventListener(AltasEvent event);
 }

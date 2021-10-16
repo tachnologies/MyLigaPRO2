@@ -74,12 +74,9 @@ public class AltaLigaActivity extends AppCompatActivity implements AltasView {
         mPresenter = new AltasPresenterClass(this);
         mPresenter.onCreate();
         mSession = AdmSession.getInstance();
-
-
         admin = (UsuarioAdmin) getIntent().getSerializableExtra(Constantes.USU_ADMIN);
         cancha = (Cancha) getIntent().getSerializableExtra(Constantes.CANCHA);
         cargando = new CargandoDialog();
-
     }
 
     @Override
@@ -128,26 +125,16 @@ public class AltaLigaActivity extends AppCompatActivity implements AltasView {
 
     @OnClick(R.id.btnGuardar)
     public void guardar() {
-        System.out.println("------------------------- guardar()");
         bloquearPantalla();
         if(esValido()){
+
             String stringTimestamp = Utilidades.obtenerStringTimestamp();
-
             cuenta = new Cuenta(admin.getUid(), "S");
-            /*cuenta.setTipoCuenta("S");
-            cuenta.setEstatus("A");
-            cuenta.setFechaAlta(Utilidades.fechaHoyFormateada());
-            cuenta.setUsuarioAlta(admin.getUid());*/
-
             String uidLiga = "L-" + stringTimestamp;
             liga = new Liga(uidLiga, etNombre.getText().toString(), admin.getUid());
-            //liga.setUid("L-" + stringTimestamp);
-            //liga.setNombre(etNombre.getText().toString());
             /** Ver si se puede iniciar sin una liga dada de alta o poner la opcion torneo*/
             liga.setNumJornadas(Integer.parseInt(etJornadas.getText().toString()));
             liga.setEquiposCalifican(Integer.parseInt(etEquiposCalifican.getText().toString()));
-            //liga.setFechaAlta(Utilidades.fechaHoyFormateada());
-            //liga.setUsuarioAlta(admin.getUid());
 
             if(cbEmpatePuntoExtra.isChecked()){
                 liga.setEmpateJuegaPuntoExtra(true);
@@ -182,8 +169,6 @@ public class AltaLigaActivity extends AppCompatActivity implements AltasView {
         }
 
     }
-
-
 
     private boolean esValido(){
         boolean esValido = true;
@@ -243,6 +228,7 @@ public class AltaLigaActivity extends AppCompatActivity implements AltasView {
         cbEmpatePuntoExtra.setEnabled(true);
         btnGuardar.setEnabled(true);
     }
+
     @Override
     public void desactivarComponentes() {
         etNombre.setEnabled(false);
@@ -256,7 +242,6 @@ public class AltaLigaActivity extends AppCompatActivity implements AltasView {
 
     @Override
     public void cuentaGuardada(String uidCuenta) {
-        System.out.println("--------------------------------------- ya se dio de alta la cuenta");
         cuenta.setUid(uidCuenta);
         mSession.setIdCuentaSel(uidCuenta);
 
@@ -273,19 +258,15 @@ public class AltaLigaActivity extends AppCompatActivity implements AltasView {
 
         MiCuentaAdmin miCuenta = new MiCuentaAdmin(uidCuenta, itemsCancha);
         admin.setMiCuenta(miCuenta);
-
-
         mPresenter.altaUsuarioAdm(admin);
 
     }
 
     @Override
     public void abrirAdmActivity() {
-        System.out.println("----------------------- abrirAdmActivity");
         activarComponentes();
         Toast.makeText(this, "Guardado con exito", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, AdminActivity.class);
-        //intent.putExtra(Constantes.USU_ADMIN, admin);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();

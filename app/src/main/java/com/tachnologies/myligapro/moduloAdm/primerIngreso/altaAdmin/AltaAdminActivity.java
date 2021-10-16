@@ -20,9 +20,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class AltaAdminActivity extends AppCompatActivity{
-
-    /**@BindView(R.id.ivFoto)
-    ImageView ivFoto;*/
     @BindView(R.id.btnSiguiente)
     Button btnSiguiente;
     @BindView(R.id.etNombre)
@@ -41,8 +38,6 @@ public class AltaAdminActivity extends AppCompatActivity{
         ButterKnife.bind(this);
 
         admin = (UsuarioAdmin) getIntent().getSerializableExtra(Constantes.USU_ADMIN);
-        System.out.println("------------------ AltaAdminActivity uid: " + admin.getUid());
-
         cargando = new CargandoDialog();
     }
 

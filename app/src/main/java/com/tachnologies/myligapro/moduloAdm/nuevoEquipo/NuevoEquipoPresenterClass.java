@@ -3,13 +3,7 @@ package com.tachnologies.myligapro.moduloAdm.nuevoEquipo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
-
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import com.tachnologies.myligapro.common.pojo.Equipo;
 import com.tachnologies.myligapro.common.pojo.UsuarioDelegado;
 import com.tachnologies.myligapro.common.utils.Constantes;
@@ -72,7 +66,7 @@ public class NuevoEquipoPresenterClass implements NuevoEquipoPresenter{
 
     @Override
     public void checarPermisos(String permissionStr, int requestPermission, Context context,
-                               Activity activity) {
+            Activity activity) {
 
         if(!Utilidades.checarPermisosGaleria(permissionStr, requestPermission, context, activity)){
             return;
@@ -103,7 +97,6 @@ public class NuevoEquipoPresenterClass implements NuevoEquipoPresenter{
     @Override
     public void onEventListener(NuevoEquipoEvent evento) {
         if (mView != null){
-            //mView.desbloquearPantalla();
 
             switch(evento.getTypeEvent()) {
                 case Constantes.ALTA_EXITOSA:
@@ -116,7 +109,6 @@ public class NuevoEquipoPresenterClass implements NuevoEquipoPresenter{
                     mView.guardarEquipo(equipo);
                     break;
                 case Constantes.ALTA_DELEGADO_EXITOSA: case Constantes.ACTUALIZACION_EXITOSA:
-                    System.out.println("------------------------- evento.getTypeEvent(): " + evento.getTypeEvent());
                     mView.finalGuardar();
                     break;
                 case Constantes.DELEGADO_EXISTENTE:

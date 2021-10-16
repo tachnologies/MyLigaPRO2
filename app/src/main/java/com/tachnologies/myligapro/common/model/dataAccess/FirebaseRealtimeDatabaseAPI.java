@@ -298,13 +298,10 @@ public class FirebaseRealtimeDatabaseAPI {
             @Override
             public void usuarioDelegadoExistente(int typeEvent, int resMsg, UsuarioDelegado delegado) {
                 List<RefEquipoDelegado> equipos = delegado.getEquipos();
-                System.out.println("----------------------------- el delegado tiene: " + equipos.size() + " equipos");
                 int index = -1;
 
                 for(int i = 0; i<equipos.size(); i++){
-                    System.out.println("----------------------------- idEquipo:" + equipos.get(i).getUidEquipo());
                     if(uidEquipo.equals(equipos.get(i).getUidEquipo())){
-                        System.out.println("----------------------------- encontro el equipo en el index:" + i);
                         index = i;
                         break;
                     }

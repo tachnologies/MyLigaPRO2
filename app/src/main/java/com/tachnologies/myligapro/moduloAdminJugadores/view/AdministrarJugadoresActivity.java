@@ -28,10 +28,10 @@ import com.tachnologies.myligapro.common.model.dataSession.DelSession;
 import com.tachnologies.myligapro.common.pojo.Equipo;
 import com.tachnologies.myligapro.common.pojo.Jugador;
 import com.tachnologies.myligapro.common.utils.Constantes;
-import com.tachnologies.myligapro.moduloAdm.jugadoresAdm.adapters.OnItemClickListener;
 import com.tachnologies.myligapro.moduloAdminJugadores.AdministrarJugadoresPresenter;
 import com.tachnologies.myligapro.moduloAdminJugadores.AdministrarJugadoresPresenterClass;
 import com.tachnologies.myligapro.moduloAdminJugadores.adapters.AdminJugadorAdapter;
+import com.tachnologies.myligapro.moduloAdminJugadores.adapters.OnItemClickListener;
 import com.tachnologies.myligapro.moduloAdminJugadores.agregarEditar.view.AgregarEditarJugadorFragment;
 
 import java.util.ArrayList;
@@ -143,9 +143,7 @@ public class AdministrarJugadoresActivity extends AppCompatActivity
         cargando.dismiss();
     }
 
-    /**
-     * --------------------------------------------AdministrarJugadoresView
-     */
+    /**--------------------------------------------AdministrarJugadoresView*/
     @Override
     public void mostrarError(int resMsg) {
         Toast.makeText(this, resMsg, Toast.LENGTH_LONG).show();
@@ -209,16 +207,12 @@ public class AdministrarJugadoresActivity extends AppCompatActivity
         if(jugador != null){
             mAdapter.update(jugador);
             equipoEditar.getJugadores().put(jugador.getUid(), jugador);
-        }else{
-            System.out.println("--------------------------------- jugador ES NULL PUERKAS");
         }
     }
 
     @Override
     public void eliminarJugador(Jugador jugador) {
-        System.out.println("--------------------------------- eliminarJugador");
         if(jugador != null){
-            System.out.println("--------------------------------- jugador != null");
             mAdapter.remove(jugador);
             equipoEditar.getJugadores().remove(jugador.getUid());
             if(mAdapter.getItemCount() <= 0){
@@ -229,8 +223,6 @@ public class AdministrarJugadoresActivity extends AppCompatActivity
                 cargando.dismiss();
             }
             Toast.makeText(this, R.string.jugador_eliminado, Toast.LENGTH_LONG).show();
-        }else{
-            System.out.println("--------------------------------- jugador ES NULL PUERKAS");
         }
     }
 

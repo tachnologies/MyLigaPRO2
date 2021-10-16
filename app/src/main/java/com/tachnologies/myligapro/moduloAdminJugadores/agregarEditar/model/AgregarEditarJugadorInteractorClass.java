@@ -1,7 +1,6 @@
 package com.tachnologies.myligapro.moduloAdminJugadores.agregarEditar.model;
 
 import android.net.Uri;
-
 import com.tachnologies.myligapro.common.callbacks.BasicErrorEventCallback;
 import com.tachnologies.myligapro.common.model.StorageUploadImageCallback;
 import com.tachnologies.myligapro.common.pojo.Jugador;
@@ -24,7 +23,6 @@ public class AgregarEditarJugadorInteractorClass implements AgregarEditarJugador
     /**--------------------------------- AgregarEditarJugadorInteractor*/
     @Override
     public void guardarJugador(Jugador jugador, String uidCuenta, String uidCancha, String uidLiga, String uidEquipo) {
-        System.out.println("----------------------------- guardarJugador AgregarEditarJugadorInteractorClass");
         mDatabase.guardarJugador(jugador, uidCuenta, uidCancha, uidLiga, uidEquipo, new BasicErrorEventCallback() {
             @Override
             public void onSuccess() {

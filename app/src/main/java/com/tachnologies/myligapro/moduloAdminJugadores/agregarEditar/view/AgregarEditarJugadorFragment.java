@@ -171,11 +171,9 @@ public class AgregarEditarJugadorFragment extends DialogFragment
         }
 
         if (this.jugador.getUrlFoto() != null && !this.jugador.getUrlFoto().isEmpty()) {
-            System.out.println("---------------------------------- tiene foto");
             cargaFotoDeBD(this.jugador.getUrlFoto());
             this.teniaFoto = true;
         } else {
-            System.out.println("---------------------------------- limpiarFoto");
             limpiarFoto();
             this.teniaFoto = false;
         }
@@ -194,7 +192,6 @@ public class AgregarEditarJugadorFragment extends DialogFragment
     }
 
     private void subirFotoJugador() {
-        System.out.println("----------------------------- subirFotoJugador");
         mPresenter.subirFotoJugador(uidCuenta, uidCancha, uidLiga, equipo.getUid(), jugadorId,
                 uriFoto);
 
@@ -385,7 +382,6 @@ public class AgregarEditarJugadorFragment extends DialogFragment
 
     @Override
     public void jugadorGuardado(Jugador jugador) {
-        System.out.println("------------------------------- jugadorGuardado");
         if(esEditar){
             mActivity.actualizarJugador(jugador);
         }else{
@@ -398,7 +394,6 @@ public class AgregarEditarJugadorFragment extends DialogFragment
 
     @Override
     public void jugadorEliminado(Jugador jugador) {
-        System.out.println("------------------------------- jugadorEliminado");
         mActivity.eliminarJugador(jugador);
         desbloquearPantalla();
         dismiss();
@@ -406,7 +401,6 @@ public class AgregarEditarJugadorFragment extends DialogFragment
 
     @Override
     public void mostrarError(int resMsg) {
-        System.out.println("------------------------------- mostrarError");
         desbloquearPantalla();
         Toast.makeText(getContext(), resMsg, Toast.LENGTH_LONG).show();
     }

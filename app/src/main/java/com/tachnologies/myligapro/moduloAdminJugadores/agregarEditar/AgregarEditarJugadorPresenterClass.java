@@ -89,8 +89,6 @@ public class AgregarEditarJugadorPresenterClass implements AgregarEditarJugadorP
     @Subscribe
     @Override
     public void onEventListener(AgregarEditarJugadorEvent evento) {
-        System.out.println("------------------------------- onEventListener");
-        System.out.println("------------------------------- evento.getTypeEvent(): " + evento.getTypeEvent());
         switch(evento.getTypeEvent()) {
             case Constantes.GUARDADO_EXITOSO:
                 mView.jugadorGuardado(evento.getJugador());

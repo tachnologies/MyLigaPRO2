@@ -45,24 +45,20 @@ public class ItemMenuAdapter extends RecyclerView.Adapter<ItemMenuAdapter.ViewHo
         dpToPixels = height * context.getResources().getDisplayMetrics().density;
         dpToPixels = dpToPixels/5;
 
-        System.out.println("------------------- dpToPixels: " + dpToPixels);
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_opcion_menu, parent, false);
-        //context = parent.getContext();
-
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_opcion_menu, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ItemMenuAdm item = items.get(position);
-
         holder.setOnClickListener(item, listener);
-
         holder.tvNombre.setText(
                 context.getString(
                         R.string.common_item_param, item.getNombre()));
@@ -75,8 +71,6 @@ public class ItemMenuAdapter extends RecyclerView.Adapter<ItemMenuAdapter.ViewHo
                 .load(item.getCodImagen())
                 .apply(options)
                 .into(holder.imgPhoto);
-
-
     }
 
     @Override
@@ -113,11 +107,8 @@ public class ItemMenuAdapter extends RecyclerView.Adapter<ItemMenuAdapter.ViewHo
 
         ViewHolder(View itemView) {
             super(itemView);
-            //System.out.println("-------------------------------- ViewHolder");
             ButterKnife.bind(this, itemView);
             this.view = itemView;
-
-            System.out.println("------------------- dpToPixels: " + dpToPixels);
 
             cvMenu.setMinimumHeight((int) dpToPixels);
         }

@@ -16,6 +16,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.tachnologies.myligapro.R;
 import com.tachnologies.myligapro.common.pojo.ItemEquipoListado;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -71,6 +72,11 @@ public class ItemEquipoListadoAdapter extends RecyclerView.Adapter<ItemEquipoLis
     @Override
     public int getItemCount() {
         return equipos.size();
+    }
+
+    public void vaciarListado(){
+        equipos = new ArrayList<ItemEquipoListado>();
+        notifyDataSetChanged();
     }
 
     public void add(ItemEquipoListado equipo){

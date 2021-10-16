@@ -14,7 +14,6 @@ public class RealtimeDatabase {
 
     public void guardarJugador(Jugador jugador, String uidCuenta, String uidCancha, String uidLiga,
             String uidEquipo, BasicErrorEventCallback callback){
-        System.out.println("----------------------------- guardarJugador agregarEditar.model.dataAccess.RealtimeDatabase");
         mDatabaseAPI.guardarJugador(jugador, uidCuenta, uidCancha, uidLiga, uidEquipo, callback);
     }
 

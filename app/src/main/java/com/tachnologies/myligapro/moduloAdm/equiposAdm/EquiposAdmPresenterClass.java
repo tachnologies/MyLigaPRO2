@@ -43,24 +43,18 @@ public class EquiposAdmPresenterClass implements EquiposAdmPresenter{
 
     @Override
     public void eliminarEquipo(String uidEquipo) {
-        //aqui bloquear pantalla cuando vaya a borrar
-        //mInteractor.eliminarEquipo(uidEquipo);
         mInteractor.buscarEquipo(uidEquipo);
     }
 
     @Subscribe
     @Override
     public void onEventListener(EquiposAdmEvent event) {
-        System.out.println("------------------- onEventListener");
         if (mView != null){
-            //aqui deberia de habilitar la pantalla
-            System.out.println("------------------- event.getTypeEvent(): " + event.getTypeEvent());
             switch (event.getTypeEvent()){
                 case Constantes.ALTA_EXITOSA:
                     mView.equipoAgregado(event.getEquipo());
                     break;
                 case Constantes.BORADO_EXITOSO:
-                    System.out.println("------------------- BORADO_EXITOSO");
                     mView.equipoBorrado(event.getEquipo());
                     break;
                 case Constantes.ACTUALIZACION_EXITOSA:

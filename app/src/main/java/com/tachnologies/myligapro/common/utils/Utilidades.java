@@ -31,11 +31,6 @@ public class Utilidades {
         Snackbar.make(contentMain, resMsg, duration).show();
     }
 
-    /* static void showSnackbar(View contentMain, int resMsg) {
-        showSnackbar(contentMain, resMsg, Snackbar.LENGTH_LONG);
-    }
-    */
-
     /** regresar la fecha del dia en formato DD-MM-YYYY*/
     public static String fechaHoyFormateada(){
         return new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.ROOT).format(new Date());
@@ -64,7 +59,6 @@ public class Utilidades {
             e.printStackTrace();
             Snackbar.make(container, R.string.common_archivo_no_encontrado,
                     BaseTransientBottomBar.LENGTH_LONG).show();
-            //UtilsCommon.showSnackbar(container, R.string.profile_error_notfound);
             return null;
         }
     }

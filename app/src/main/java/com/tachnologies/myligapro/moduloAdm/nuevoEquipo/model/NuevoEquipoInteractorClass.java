@@ -61,7 +61,6 @@ public class NuevoEquipoInteractorClass implements NuevoEquipoInteractor{
 
     @Override
     public void guardarDelegado(UsuarioDelegado delegado) {
-        System.out.println("--------------------------- agregar Delegado Interactor");
         mDatabase.verificaExisteUsuario(delegado.getUid(), new EventErrorTypeListener() {
             @Override
             public void onError(int typeEvent, int resMsg) {
@@ -92,18 +91,14 @@ public class NuevoEquipoInteractorClass implements NuevoEquipoInteractor{
 
     @Override
     public void actualizarDelegado(UsuarioDelegado delegado){
-        System.out.println("--------------------------- actualizarDelegado Interactor");
         mDatabase.actualizarDelegado(delegado, new BasicErrorEventCallback() {
             @Override
             public void onSuccess() {
-                System.out.println("--------------------------- onSuccess()");
                 post(Constantes.ACTUALIZACION_EXITOSA);
             }
 
             @Override
             public void onError(int typeEvent, int resMsg) {
-                System.out.println("--------------------------- onError()");
-                System.out.println("--------------------------- typeEvent: " + typeEvent);
             }
         });
     }

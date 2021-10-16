@@ -9,7 +9,6 @@ import com.tachnologies.myligapro.R;
 import com.tachnologies.myligapro.common.callbacks.BasicErrorEventCallback;
 import com.tachnologies.myligapro.common.model.dataAccess.FirebaseRealtimeDatabaseAPI;
 import com.tachnologies.myligapro.common.pojo.Equipo;
-import com.tachnologies.myligapro.common.pojo.Jugador;
 import com.tachnologies.myligapro.common.utils.Constantes;
 import com.tachnologies.myligapro.moduloAdm.equiposAdm.events.BuscarEquipoListener;
 import com.tachnologies.myligapro.moduloLogin.events.LoginEvent;

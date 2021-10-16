@@ -17,9 +17,6 @@ import com.tachnologies.myligapro.common.utils.Constantes;
 public class FirebaseStorageAPI {
     private FirebaseStorage mFirebaseStorage;
 
-    //ver como el uid del usuario pueda ser accesible en todos lados
-    private String uidUsuario;
-
     private static class Singleton{
         private static final FirebaseStorageAPI INSTANCE = new FirebaseStorageAPI();
     }
@@ -44,7 +41,6 @@ public class FirebaseStorageAPI {
                 .child(uidCuenta)
                 .child(Constantes.PATH_CANCHAS)
                 .child(uidCancha);
-        //  Raiz-canchas-uidCancha
     }
 
     public StorageReference getReferenciaLigaPorUid(String uidCuenta, String uidCancha, String uidLiga){
@@ -55,7 +51,6 @@ public class FirebaseStorageAPI {
                 .child(uidCancha)
                 .child(Constantes.PATH_LIGAS)
                 .child(uidLiga);
-        //  Raiz-canchas-uidCancha-ligas-uidLiga
     }
 
     public StorageReference getReferenciaEquipoPorUid(String uidCuenta, String uidCancha, String uidLiga,
@@ -70,7 +65,6 @@ public class FirebaseStorageAPI {
                 .child(Constantes.PATH_EQUIPOS)
                 .child(uidEquipo)
                 .child(Constantes.PATH_ESCUDO);
-        //  Raiz-canchas-uidCancha-ligas-uidLiga-equipos-uidEquipo
     }
 
     public StorageReference getReferenciaJugadorPorUid(String uidCuenta, String uidCancha, String uidLiga,
@@ -86,7 +80,6 @@ public class FirebaseStorageAPI {
                 .child(uidEquipo)
                 .child(Constantes.PATH_JUGADORES)
                 .child(uidJugador);
-        //  Raiz-canchas-uidCancha-ligas-uidLiga-equipos-uidEquipo-jugadores-uidJugador
     }
 
     public void borrarFotoEquipo(String uidCuenta, String uidCancha, String uidLiga,
@@ -106,12 +99,10 @@ public class FirebaseStorageAPI {
             referencia.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
-                    System.out.println("---------------------- AAAAhhhh nu maaa si borro");
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception exception) {
-                    System.out.println("---------------------- pos no borro");
                 }
             });
         }
@@ -167,7 +158,6 @@ public class FirebaseStorageAPI {
 
     public void borrarCarpetaEquipo(String uidCuenta, String uidCancha, String uidLiga,
                                     String uidEquipo){
-        //AdmSession admSession = AdmSession.getInstance();
         StorageReference referencia = getReferenciaEquipoPorUid(uidCuenta, uidCancha, uidLiga,
                 uidEquipo);
 

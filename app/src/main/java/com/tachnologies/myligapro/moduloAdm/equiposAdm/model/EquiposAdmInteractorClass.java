@@ -24,8 +24,6 @@ public class EquiposAdmInteractorClass implements EquiposAdmInteractor{
 
     @Override
     public void subscribirAEquipos() {
-        //(final EquiposAdmEventListener listener)
-        System.out.println("------------------- Interactor subscribir a equipos");
         mDatabase.subscribirAEquipos(mSession.getIdCuentaSel(), mSession.getIdCanchaSel(),
                 mSession.getIdLigaSel(), new EquiposAdmEventListener() {
             @Override
@@ -84,8 +82,6 @@ public class EquiposAdmInteractorClass implements EquiposAdmInteractor{
 
             @Override
             public void equipoExiste(int typeEvent, int resMsg, Equipo equipo) {
-                //List<RefDelegadoAdm> delegados = equipo.getDelegados();
-                System.out.println("--------------------------A borrar referencia a delegado");
                 if(equipo.getDelegados() != null && equipo.getDelegados().size() > 0){
                     mDatabase.eliminaRefEquipoEnDelegados(equipo.getUid(), equipo.getDelegados(),
                             new BasicErrorEventCallback() {
