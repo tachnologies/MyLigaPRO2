@@ -25,6 +25,13 @@ public class Constantes {
     public static final String FECHA_MODIFICACION  = "fechaModificacion";
     public static final String USUARIO_MODIFICACION  = "usuarioModificacion";
 
+    public static final String TIPO_LIGA_TORNEO  = "T";
+    public static final String TIPO_LIGA_LIGAYELIMINATORIA  = "L";
+    public static final String TIPO_LIGA_ELIMINATORIA  = "E";
+    public static final String COMMON_MASCULINO_VALUE  = "M";
+    public static final String COMMON_FEMENINO_VALUE  = "F";
+    public static final String COMMON_MIXTO_VALUE  = "MIX";
+
     public static final String ESTATUS =    "estatus";
 
     public static final String UID_CUENTA  = "uidCuenta";

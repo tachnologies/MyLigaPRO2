@@ -10,8 +10,7 @@ public class Liga implements Serializable {
     @Exclude
     private String uid;
     private String nombre;
-    //private List<String> dias; //con posibilidad de ponerse
-    private List<String> urlFotosLiga;
+    private List<String> dias;
     private String urlFotoLogo;
 
     /** Aqui podra tener el genero
@@ -19,17 +18,11 @@ public class Liga implements Serializable {
      * F = Femenil
      * M = Mixto*/
     private String genero;
-
-    /** la categoria*/
-    private String categoria;
-
-    private int numJornadas;
+    //private int numJornadas;
     private int jornadaActual;
     private int equiposCalifican;
-
-    private boolean finalEsFecha1;
+    //private boolean finalEsFecha1;
     private boolean empateJuegaPuntoExtra;
-
 
     private List<Equipo> equipos;
     private List<Sancionado> sancionados;
@@ -44,7 +37,7 @@ public class Liga implements Serializable {
     private int cantidadRegistros;
     private boolean hayRepechaje;
     private int equiposRepechaje;
-
+    private boolean finalesConIdaYVuelta;
     /** -------------------- Datos Control */
     private String fechaAlta;
     private String usuarioAlta;
@@ -78,14 +71,14 @@ public class Liga implements Serializable {
         this.nombre = nombre;
     }
 
-    public List<String> getUrlFotosLiga() {
+    /*public List<String> getUrlFotosLiga() {
         return urlFotosLiga;
     }
 
     public void setUrlFotosLiga(List<String> urlFotosLiga) {
         this.urlFotosLiga = urlFotosLiga;
     }
-
+*/
     public String getUrlFotoLogo() {
         return urlFotoLogo;
     }
@@ -94,13 +87,13 @@ public class Liga implements Serializable {
         this.urlFotoLogo = urlFotoLogo;
     }
 
-    public int getNumJornadas() {
+   /* public int getNumJornadas() {
         return numJornadas;
     }
 
     public void setNumJornadas(int numJornadas) {
         this.numJornadas = numJornadas;
-    }
+    }*/
 
     public int getJornadaActual() {
         return jornadaActual;
@@ -118,13 +111,13 @@ public class Liga implements Serializable {
         this.equiposCalifican = equiposCalifican;
     }
 
-    public boolean isFinalEsFecha1() {
+    /*public boolean isFinalEsFecha1() {
         return finalEsFecha1;
     }
 
     public void setFinalEsFecha1(boolean finalEsFecha1) {
         this.finalEsFecha1 = finalEsFecha1;
-    }
+    }*/
 
     public boolean isEmpateJuegaPuntoExtra() {
         return empateJuegaPuntoExtra;
@@ -261,4 +254,20 @@ public class Liga implements Serializable {
     public void setDelegados(List<String> delegados) {
         this.delegados = delegados;
     }*/
+
+    public List<String> getDias() {
+        return dias;
+    }
+
+    public void setDias(List<String> dias) {
+        this.dias = dias;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
 }

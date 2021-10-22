@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".moduloAdm.primerIngreso.altaLiga.AltaLigaActivity"
     android:layout_marginLeft="@dimen/common_margen_mediano"
-    android:layout_marginRight="@dimen/common_margen_mediano">
+    android:layout_marginRight="@dimen/common_margen_mediano"
+    tools:context=".moduloAdm.AgregaEditaLigas">
 
     <ScrollView
         android:id="@+id/sVMain"
@@ -59,9 +59,10 @@
             <View style="@style/separador"/>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tlNombre"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:counterMaxLength="@integer/maxLongitud_nombre_liga"
+                app:counterEnabled="true">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etNombre"
                     android:layout_width="match_parent"
@@ -70,13 +71,12 @@
                     android:gravity="center"
                     android:hint="@string/alta_liga_nombre"
                     android:inputType="textPersonName"
-                    android:maxLength="@integer/maxLongitud_nombre" />
+                    android:maxLength="@integer/maxLongitud_nombre_liga" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <View style="@style/separador"/>
 
             <TextView
-                android:id="@+id/tvGenero"
                 style="@style/labelSpinner"
                 android:text="@string/common_genero"
                 android:textAlignment="center"
@@ -92,7 +92,6 @@
             <View style="@style/separador"/>
 
             <TextView
-                android:id="@+id/tvTipoTorneo"
                 style="@style/labelSpinner"
                 android:text="@string/alta_liga_tipo_torneo"
                 android:layout_marginTop="@dimen/common_margen_chiquito"/>
@@ -101,7 +100,7 @@
                 android:id="@+id/spTipoTorneo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:entries="@array/generos"
+                android:entries="@array/tipo_torneo"
                 android:textAlignment="center"/>
 
             <TextView
@@ -124,7 +123,8 @@
                 android:id="@+id/tlLimJugadores"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/common_margen_chiquito">
+                android:layout_marginTop="@dimen/common_margen_chiquito"
+                android:visibility="gone">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etLimJugadores"
@@ -144,7 +144,6 @@
                 />
 
             <TextView
-                android:id="@+id/tvDias"
                 style="@style/labelSpinner"
                 android:text="@string/common_dias"
                 android:layout_marginTop="@dimen/common_margen_chiquito"/>
@@ -192,6 +191,12 @@
 
             <View style="@style/separador"/>
 
+        <LinearLayout
+            android:id="@+id/llRepechaje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
             <CheckBox
                 android:id="@+id/cbRepechaje"
                 android:text="@string/alta_liga_cb_repechaje"
@@ -217,45 +222,72 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <View style="@style/separador"/>
+        </LinearLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tlEquiposCalifican"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/common_margen_chiquito">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEquiposCalifican"
+        <LinearLayout
+            android:id="@+id/llEquiposCalifican"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:enabled="true"
-                    android:gravity="center"
-                    android:hint="@string/alta_liga_equipos_califican"
-                    android:inputType="number"/>
+                    android:layout_marginTop="@dimen/common_margen_chiquito">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEquiposCalifican"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="true"
+                        android:gravity="center"
+                        android:hint="@string/alta_liga_equipos_califican"
+                        android:inputType="number"
+                        />
 
-            <View style="@style/separador"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View style="@style/separador"/>
+            </LinearLayout>
+
 
             <CheckBox
                 android:id="@+id/cbEmpatePuntoExtra"
                 android:text="@string/alta_liga_empate_pt_extra"
                 android:layout_marginTop="@dimen/common_margen_chiquito"
-                style="@style/checkboxDerecha"/>
+                style="@style/checkboxDerecha"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:id="@+id/llBotones2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/common_margen_chiquito"
+                android:layout_marginBottom="@dimen/common_margen_chiquito">
+
+                <Button
+                    android:id="@+id/btnCancelar"
+                    style="@style/botonTercero"
+                    android:text="@string/common_regresar"
+                    android:layout_marginRight="@dimen/margen_horizontal_botones_inicio"/>
+
+                <Button
+                    android:id="@+id/btnGuardar"
+                    style="@style/botonGuardar"
+                    android:text="@string/common_guardar"/>
+
+            </LinearLayout>
 
             <Button
-                android:id="@+id/btnGuardar"
-                style="@style/botonGuardar"
-                android:text="@string/common_guardar"
-                android:layout_marginTop="@dimen/common_margen_chiquito"
-                android:layout_gravity="center"/>
+                android:id="@+id/btnEliminar"
+                style="@style/botonCancelar"
+                android:text="@string/eliminar_liga"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/common_margen_mediano"/>
         </LinearLayout>
-
-
-
     </ScrollView>
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

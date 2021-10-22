@@ -36,6 +36,30 @@
     <string name="common_mis_equipos">Mis Equipos</string>
     <string name="common_parametro_string">%s</string>
     <string name="common_doble_parametro_string">%s\n%s</string>
+    <string name="common_dias">D&#237;as Liga</string>
+
+    <string name="common_lunes">Lunes</string>
+    <string name="common_martes">Martes</string>
+    <string name="common_miercoles">Mi&#233;rcoles</string>
+    <string name="common_jueves">Jueves</string>
+    <string name="common_viernes">Viernes</string>
+    <string name="common_sabado">S&#225;bado</string>
+    <string name="common_domingo">Domingo</string>
+
+    <string name="common_genero">Genero</string>
+    <string name="common_seleccione">Seleccione</string>
+    <string name="common_masculino">Masculino</string>
+    <string name="common_femenino">Femenino</string>
+    <string name="common_mixto">Mixto</string>
+
+    <string name="alta_liga_tipo_torneo">Tipo de Torneo</string>
+    <string name="alta_liga_torneo_liga">Torneo de liga</string>
+    <string name="alta_liga_torneo_liga_eliminatoria">Liga + Eliminatoria</string>
+    <string name="alta_liga_eliminatoria">Eliminatoria</string>
+
+    <string name="alta_liga_torneo_liga_descripcion">Los equipos se enfrentan y el campeon sera aquel que tenga mas puntos acumulados a lo largo de la temporada</string>
+    <string name="alta_liga_torneo_liga_eliminatoria_descripcion">Los equipos se enfrentan jornada a jornada para calificarse a la fase final y alli abrirse paso hasta la gran final para coronarse un campeon</string>
+    <string name="alta_liga_eliminatoria_descripcion">En este torneo los equipos se enfrentan en eliminatorias directas donde el perdedor es descalificado</string>
     <!--********************************************* /Textos Comunes *********************************************-->
 
     <!--********************************************* Login *********************************************-->
@@ -75,16 +99,21 @@
     <string name="alta_liga_titulo">Alta Liga</string>
     <string name="alta_liga_nombre">Nombre de la liga</string>
     <string name="alta_liga_numero_jornadas">N&#250;mero de jornadas</string>
-    <string name="alta_liga_equipos_califican">Cuantos pasan directo a finales</string>
+    <string name="alta_liga_hay_limite_jugadores">Hay L&#237;mite de jugadores</string>
+    <string name="alta_liga_cantidad_jugadores">Cantidad de jugadores</string>
+    <string name="alta_liga_equipos_califican">Equipos van directo a finales</string>
     <string name="alta_liga_cb_repechaje">Hay repechaje</string>
-    <string name="alta_liga_equipos_repechaje">Cuantos van a repechaje</string>
-    <string name="alta_liga_empate_pt_extra">En caso de empate hay punto extra</string>
+    <string name="alta_liga_equipos_repechaje">Cantidad equipos a repechaje</string>
+    <string name="alta_liga_empate_pt_extra">En caso de empate, se juega un punto extra</string>
     <string name="alta_liga_error_num_jornadas">Ingrese el n&#250;mero de jornadas</string>
     <string name="alta_liga_error_num_equipos_liguilla">Ingrese el n&#250;mero de equipos que entran directo a liguilla</string>
     <string name="alta_liga_error_num_equipos_repechaje">Ingrese el n&#250;mero de equipos que van a repechaje</string>
     <string name="alta_liga_error_no_numero">Ingrese un valor n&#250;merico entero</string>
     <!--********************************************* /Alta Liga *********************************************-->
+    <!--********************************************* Editar Liga *********************************************-->
+    <string name="editar_liga_titulo">Editar Liga</string>
 
+    <!--********************************************* /Editar Liga *********************************************-->
     <!--********************************************* Delegado Activity *********************************************-->
     <string name="main_delegado_sin_equipos">Usted no cuenta con equipos para administrar, notifique al administrador de su liga para que sea dado de alta como delegado de su equipo con su n&#250;mero telef&#243;nico</string>
 
@@ -165,4 +194,5 @@
     <string name="dialogo_borrar_jugador">¿Realmente desea eliminar al jugador %s?</string>
     <string name="borrar_jugador_titulo">Borrar Jugador</string>
     <string name="jugador_eliminado">Jugador Eliminado</string>
+    <string name="eliminar_liga">Eliminar Liga</string>
 </resources>

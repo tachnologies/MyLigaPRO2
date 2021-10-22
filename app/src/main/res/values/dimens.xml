@@ -17,6 +17,7 @@
     <dimen name="common_margen_titulos">10dp</dimen>
     <dimen name="common_margen_mediano">30dp</dimen>
     <dimen name="common_espacio_doble_titulo_listados">90dp</dimen>
+    <dimen name="common_tamanyo_label_spinner">17sp</dimen>
 
     <!-- pantalla de inicio -->
     <dimen name="ancho_boton_pantalla_inicio">150dp</dimen>

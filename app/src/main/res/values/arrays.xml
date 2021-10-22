@@ -44,5 +44,33 @@
         <item>+58</item>
     </string-array>
 
+    <string-array name="generos" >
+        <item>@string/common_seleccione</item>
+        <item>@string/common_masculino</item>
+        <item>@string/common_femenino</item>
+        <item>@string/common_mixto</item>
+    </string-array>
+
+    <string-array name="generosValues" >
+        <item></item>
+        <item>M</item>
+        <item>F</item>
+        <item>MIX</item>
+    </string-array>
+
+
+    <string-array name="tipo_torneo" >
+        <item>@string/common_seleccione</item>
+        <item>@string/alta_liga_torneo_liga</item>
+        <item>@string/alta_liga_torneo_liga_eliminatoria</item>
+        <item>@string/alta_liga_eliminatoria</item>
+    </string-array>
+
+    <string-array name="tipo_torneoValues" >
+        <item></item>
+        <item>T</item>
+        <item>L</item>
+        <item>E</item>
+    </string-array>
 
 </resources>

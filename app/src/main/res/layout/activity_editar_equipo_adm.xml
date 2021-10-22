@@ -31,7 +31,7 @@
                 android:id="@+id/imgFoto"
                 android:layout_width="@dimen/nuevo_equipo_alto_img"
                 android:layout_height="@dimen/nuevo_equipo_alto_img"
-                android:layout_marginTop="@dimen/common_margen_titulos"
+                android:layout_marginTop="@dimen/common_margen_chiquito"
                 android:src="@drawable/escudo_equipo"
                 android:layout_gravity="center"/>
 
@@ -59,7 +59,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:counterMaxLength="@integer/nuevo_equipo_max_longitud_nombre"
-                android:layout_marginTop="@dimen/common_margen_chiquito"
                 android:layout_marginLeft="@dimen/common_margen_mediano"
                 android:layout_marginRight="@dimen/common_margen_mediano"
                 app:counterEnabled="true">
@@ -79,7 +78,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/nuevo_equipo_agregar_delegado"
                 android:textAlignment="center"
-                android:layout_gravity="center"
                 android:layout_marginTop="@dimen/common_margen_chiquito"
                 android:layout_marginLeft="@dimen/common_margen_mediano"
                 android:layout_marginRight="@dimen/common_margen_mediano"

@@ -2,26 +2,32 @@ package com.tachnologies.myligapro.moduloAdm.listadoLigas;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.tachnologies.myligapro.R;
 import com.tachnologies.myligapro.common.model.dataSession.AdmSession;
 import com.tachnologies.myligapro.common.pojo.CuentaAdminInvitado;
 import com.tachnologies.myligapro.common.pojo.ItemCanchaListado;
 import com.tachnologies.myligapro.common.pojo.ItemLigaListado;
 import com.tachnologies.myligapro.common.pojo.UsuarioAdmin;
-import com.tachnologies.myligapro.moduloAdm.mainAdm.AdminActivity;
+import com.tachnologies.myligapro.common.utils.Constantes;
+import com.tachnologies.myligapro.moduloAdm.AgregaEditaLigas;
 import com.tachnologies.myligapro.moduloAdm.listadoLigas.adapters.ItemLigaListadoAdapter;
 import com.tachnologies.myligapro.moduloAdm.listadoLigas.adapters.OnItemClickListener;
+import com.tachnologies.myligapro.moduloAdm.mainAdm.AdminActivity;
+
 import java.util.ArrayList;
 import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ListadoLigasActivity extends AppCompatActivity implements OnItemClickListener {
 
@@ -29,6 +35,9 @@ public class ListadoLigasActivity extends AppCompatActivity implements OnItemCli
     RecyclerView recyclerView;
     @BindView(R.id.contentMain)
     ConstraintLayout contentMain;
+    @BindView(R.id.btnNuevo)
+    FloatingActionButton btnNuevo;
+
     private String idCancha;
     private AdmSession mSession;
     private Map<String, ItemLigaListado> ligas;
@@ -76,19 +85,23 @@ public class ListadoLigasActivity extends AppCompatActivity implements OnItemCli
                 }
             }
 
-            if(encontroCancha){
+            if (encontroCancha) {
                 for (Map.Entry<String, ItemLigaListado> liga : ligas.entrySet()) {
                     mAdapter.add(liga.getValue());
                 }
 
-                if(mAdapter.getItemCount() > 0){
-                    if(mAdapter.getItemCount() == 1){
+                /**
+                 * ------------------------------------     NO QUITARRRRRRR!!!!!!
+                 * posteriormente vere si es necesario que si se tiene 1 sola cancha se de clic solo
+                 * esto x que es posible agregar mas ligas
+                 * if (mAdapter.getItemCount() > 0) {
+                    if (mAdapter.getItemCount() == 1) {
                         onItemClick(mAdapter.getPrimero());
                     }
-                }else{
+                } else {
                     System.out.println("-------- sin pinshis LIGAS :V");
-                }
-            }else{
+                }*/
+            } else {
                 System.out.println("------------- No se encontro cancha puerks");
             }
 
@@ -126,5 +139,14 @@ public class ListadoLigasActivity extends AppCompatActivity implements OnItemCli
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
+    }
+
+    @OnClick(R.id.btnNuevo)
+    public void onViewClicked() {
+        Intent intent = new Intent(this, AgregaEditaLigas.class);
+        intent.putExtra(Constantes.ES_NUEVO, true);
+        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        //finish();
     }
 }

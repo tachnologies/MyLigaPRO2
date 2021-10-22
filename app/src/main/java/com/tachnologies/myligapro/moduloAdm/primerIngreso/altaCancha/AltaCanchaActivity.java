@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.tachnologies.myligapro.R;
 import com.tachnologies.myligapro.common.animaciones.cargando.CargandoDialog;
+import com.tachnologies.myligapro.common.model.dataSession.AdmSession;
 import com.tachnologies.myligapro.common.pojo.Cancha;
 import com.tachnologies.myligapro.common.pojo.UsuarioAdmin;
 import com.tachnologies.myligapro.common.utils.Constantes;
@@ -70,7 +71,11 @@ public class AltaCanchaActivity extends AppCompatActivity {
             admins.add(admin.getUid());
             Cancha cancha = new Cancha(etNombre.getText().toString().trim(), admins, admin.getUid());
 
-            intent.putExtra(Constantes.USU_ADMIN, admin);
+            AdmSession mSession = AdmSession.getInstance();
+            mSession.setAdminLogeado(admin);
+
+            intent.putExtra(Constantes.ESTATUS, 0);
+            //intent.putExtra(Constantes.USU_ADMIN, admin);
             intent.putExtra(Constantes.CANCHA, cancha);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);

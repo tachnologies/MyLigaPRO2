@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="maxLongitud_nombre">150</integer>
+    <integer name="maxLongitud_nombre">30</integer>
+    <integer name="maxLongitud_nombre_liga">40</integer>
     <integer name="columnas_listado">3</integer>
     <integer name="columnas_menu">2</integer>
 

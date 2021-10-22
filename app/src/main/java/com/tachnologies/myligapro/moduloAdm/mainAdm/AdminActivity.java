@@ -45,9 +45,7 @@ public class AdminActivity extends AppCompatActivity implements OnItemClickListe
             configAdapter();
             configRecyclerView();
             llenarAdapter();
-
             tvTitulo.setText(getString(R.string.common_liga) + ": " +mSession.getNombreLigaSel());
-
         } else {
             System.out.println("------------------------- ADMIN NULL");
         }
@@ -153,9 +151,9 @@ public class AdminActivity extends AppCompatActivity implements OnItemClickListe
         }
 
         if(intent != null){
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
-            finish();
+            //finish();
         }
 
     }

@@ -1,13 +1,18 @@
 package com.tachnologies.myligapro.moduloAdm.primerIngreso.altaLiga;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -40,8 +45,6 @@ public class AltaLigaActivity extends AppCompatActivity implements AltasView {
 
     @BindView(R.id.etNombre)
     TextInputEditText etNombre;
-    @BindView(R.id.etJornadas)
-    TextInputEditText etJornadas;
     @BindView(R.id.etEquiposCalifican)
     TextInputEditText etEquiposCalifican;
     @BindView(R.id.cbRepechaje)
@@ -54,12 +57,44 @@ public class AltaLigaActivity extends AppCompatActivity implements AltasView {
     TextInputLayout tlRepechaje;
     @BindView(R.id.btnGuardar)
     Button btnGuardar;
+    @BindView(R.id.tvTitulo)
+    TextView tvTitulo;
+    @BindView(R.id.imgFoto)
+    AppCompatImageView imgFoto;
+    @BindView(R.id.imgBorrarFoto)
+    AppCompatImageView imgBorrarFoto;
+    @BindView(R.id.imgDesdeGaleria)
+    AppCompatImageView imgDesdeGaleria;
+    @BindView(R.id.spGenero)
+    Spinner spGenero;
+    @BindView(R.id.spTipoTorneo)
+    Spinner spTipoTorneo;
+    @BindView(R.id.tvDescTipoTorneo)
+    TextView tvDescTipoTorneo;
+    @BindView(R.id.cbLimJugadores)
+    CheckBox cbLimJugadores;
+    @BindView(R.id.etLimJugadores)
+    TextInputEditText etLimJugadores;
+    @BindView(R.id.cbLunes)
+    CheckBox cbLunes;
+    @BindView(R.id.cbMartes)
+    CheckBox cbMartes;
+    @BindView(R.id.cbMiercoles)
+    CheckBox cbMiercoles;
+    @BindView(R.id.cbJueves)
+    CheckBox cbJueves;
+    @BindView(R.id.cbViernes)
+    CheckBox cbViernes;
+    @BindView(R.id.cbSabado)
+    CheckBox cbSabado;
+    @BindView(R.id.cbDomingo)
+    CheckBox cbDomingo;
 
     private UsuarioAdmin admin;
     private Cancha cancha;
     private Cuenta cuenta;
     private Liga liga;
-    /** para lo del gif */
+    /**para lo del gif*/
     CargandoDialog cargando;
 
     private AltasPresenter mPresenter;
@@ -74,9 +109,63 @@ public class AltaLigaActivity extends AppCompatActivity implements AltasView {
         mPresenter = new AltasPresenterClass(this);
         mPresenter.onCreate();
         mSession = AdmSession.getInstance();
-        admin = (UsuarioAdmin) getIntent().getSerializableExtra(Constantes.USU_ADMIN);
+        //admin = (UsuarioAdmin) getIntent().getSerializableExtra(Constantes.USU_ADMIN);
+        admin = mSession.getAdminLogeado();
         cancha = (Cancha) getIntent().getSerializableExtra(Constantes.CANCHA);
         cargando = new CargandoDialog();
+
+        tvDescTipoTorneo.setText(Constantes.CADENA_VACIA);
+
+        spTipoTorneo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                System.out.println("---------------------------------- onItemSelected");
+                String tipoTorneo = getResources()
+                        .getStringArray(R.array.tipo_torneoValues)[spTipoTorneo.getSelectedItemPosition()];
+
+                if(!Validaciones.estaVacio(tipoTorneo)){
+                    tvDescTipoTorneo.setVisibility(View.VISIBLE);
+
+                    String descripcionTorneo = Constantes.CADENA_VACIA;
+
+                    switch (tipoTorneo){
+                        case Constantes.TIPO_LIGA_TORNEO:               //T
+                            descripcionTorneo = getString(R.string.alta_liga_torneo_liga_descripcion);
+                            cbRepechaje.setChecked(false);
+                            cbRepechaje.setVisibility(View.GONE);
+                            break;
+                        case Constantes.TIPO_LIGA_LIGAYELIMINATORIA:    //L
+                            descripcionTorneo =
+                                    getString(R.string.alta_liga_torneo_liga_eliminatoria_descripcion);
+                            etRepechaje.setText(Constantes.CADENA_VACIA);
+                            etRepechaje.setVisibility(View.GONE);
+                            etEquiposCalifican.setText(Constantes.CADENA_VACIA);
+                            etEquiposCalifican.setVisibility(View.GONE);
+                            break;
+                        case Constantes.TIPO_LIGA_ELIMINATORIA:         //E
+                            descripcionTorneo = getString(R.string.alta_liga_eliminatoria_descripcion);
+                            cbRepechaje.setChecked(false);
+                            cbRepechaje.setVisibility(View.GONE);
+                            cbEmpatePuntoExtra.setChecked(false);
+                            cbEmpatePuntoExtra.setVisibility(View.GONE);
+                            break;
+                        default:
+                    }
+                    tvDescTipoTorneo.setText(descripcionTorneo);
+
+                }else{
+                    tvDescTipoTorneo.setText(Constantes.CADENA_VACIA);
+                    tvDescTipoTorneo.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                System.out.println("---------------------------------- onItemSelected");
+                tvDescTipoTorneo.setText(Constantes.CADENA_VACIA);
+                tvDescTipoTorneo.setVisibility(View.GONE);
+            }
+        });
     }
 
     @Override
@@ -97,23 +186,46 @@ public class AltaLigaActivity extends AppCompatActivity implements AltasView {
         mPresenter.onDestroy();
     }
 
-    @OnClick({R.id.cbRepechaje, R.id.cbEmpatePuntoExtra})
+    @OnClick({R.id.cbRepechaje, R.id.cbEmpatePuntoExtra, R.id.imgFoto, R.id.imgBorrarFoto,
+            R.id.imgDesdeGaleria, R.id.cbLimJugadores})
     public void onViewClicked(View view) {
-        switch (view.getId()) {
+        float alpha = 0f;
+        int mediumAnimationDuration = getResources().getInteger(
+                android.R.integer.config_mediumAnimTime);
 
-            case R.id.cbRepechaje:
-                float alpha = 0f;
-                if(cbRepechaje.isChecked()){
-                    tlRepechaje.setVisibility(View.VISIBLE);
+        switch (view.getId()) {
+            case R.id.imgFoto:
+                break;
+            case R.id.imgBorrarFoto:
+                break;
+            case R.id.imgDesdeGaleria:
+                break;
+            case R.id.cbLimJugadores:
+
+                if (cbLimJugadores.isChecked()) {
+                    etLimJugadores.setVisibility(View.VISIBLE);
                     alpha = 1f;
-                }else{
-                    tlRepechaje.setVisibility(View.GONE);
+                } else {
+                    etLimJugadores.setVisibility(View.GONE);
+                    etLimJugadores.setText("");
+                }
+                etLimJugadores.animate()
+                        .alpha(alpha)
+                        .setDuration(mediumAnimationDuration)
+                        .setListener(null);
+
+                break;
+            case R.id.cbRepechaje:
+                if (cbRepechaje.isChecked()) {
+                    etRepechaje.setVisibility(View.VISIBLE);
+                    alpha = 1f;
+                } else {
+                    etRepechaje.setVisibility(View.GONE);
                     etRepechaje.setText("");
                 }
-                int mediumAnimationDuration = getResources().getInteger(
-                        android.R.integer.config_mediumAnimTime);
 
-                tlRepechaje.animate()
+
+                etRepechaje.animate()
                         .alpha(alpha)
                         .setDuration(mediumAnimationDuration)
                         .setListener(null);
@@ -126,26 +238,26 @@ public class AltaLigaActivity extends AppCompatActivity implements AltasView {
     @OnClick(R.id.btnGuardar)
     public void guardar() {
         bloquearPantalla();
-        if(esValido()){
+        if (esValido()) {
 
             String stringTimestamp = Utilidades.obtenerStringTimestamp();
             cuenta = new Cuenta(admin.getUid(), "S");
             String uidLiga = "L-" + stringTimestamp;
             liga = new Liga(uidLiga, etNombre.getText().toString(), admin.getUid());
             /** Ver si se puede iniciar sin una liga dada de alta o poner la opcion torneo*/
-            liga.setNumJornadas(Integer.parseInt(etJornadas.getText().toString()));
+            //liga.setNumJornadas(Integer.parseInt(etJornadas.getText().toString()));
             liga.setEquiposCalifican(Integer.parseInt(etEquiposCalifican.getText().toString()));
 
-            if(cbEmpatePuntoExtra.isChecked()){
+            if (cbEmpatePuntoExtra.isChecked()) {
                 liga.setEmpateJuegaPuntoExtra(true);
-            }else{
+            } else {
                 liga.setEmpateJuegaPuntoExtra(false);
             }
 
-            if(cbRepechaje.isChecked()){
+            if (cbRepechaje.isChecked()) {
                 liga.setHayRepechaje(true);
                 liga.setEquiposRepechaje(Integer.parseInt(etRepechaje.getText().toString()));
-            }else{
+            } else {
                 liga.setHayRepechaje(false);
             }
 
@@ -164,49 +276,71 @@ public class AltaLigaActivity extends AppCompatActivity implements AltasView {
             cuenta.setCanchas(canchas);
             mPresenter.altaCuenta(cuenta);
 
-        }else{
+        } else {
             desbloquearPantalla();
         }
 
     }
 
-    private boolean esValido(){
+    private boolean esValido() {
         boolean esValido = true;
-        if (etNombre.getText() == null || etNombre.getText().toString().trim().isEmpty()){
+        if (etNombre.getText() == null || etNombre.getText().toString().trim().isEmpty()) {
             etNombre.setError(getString(R.string.common_error_ingrese_nombre));
             esValido = false;
         }
 
-        if (etJornadas.getText() == null || etJornadas.getText().toString().trim().isEmpty()){
-            etJornadas.setError(getString(R.string.alta_liga_error_num_jornadas));
-            esValido = false;
-        }
-
-        if (etEquiposCalifican.getText() == null || etEquiposCalifican.getText().toString().trim().isEmpty()){
+        if (etEquiposCalifican.getText() == null || etEquiposCalifican.getText().toString().trim().isEmpty()) {
             etEquiposCalifican.setError(getString(R.string.alta_liga_error_num_equipos_liguilla));
             esValido = false;
-        }else{
-            if(!Validaciones.esNumerico(etEquiposCalifican.getText().toString())){
+        } else {
+            if (!Validaciones.esNumerico(etEquiposCalifican.getText().toString())) {
                 etEquiposCalifican.setError(getString(R.string.alta_liga_error_no_numero));
                 esValido = false;
             }
         }
 
-        if(cbRepechaje.isChecked()){
-            if (etRepechaje.getText() == null || etRepechaje.getText().toString().trim().isEmpty()){
+        if (cbRepechaje.isChecked()) {
+            if (etRepechaje.getText() == null || etRepechaje.getText().toString().trim().isEmpty()) {
                 etRepechaje.setError(getString(R.string.alta_liga_error_num_equipos_repechaje));
                 esValido = false;
-            }else{
-                if(!Validaciones.esNumerico(etRepechaje.getText().toString())){
+            } else {
+                if (!Validaciones.esNumerico(etRepechaje.getText().toString())) {
                     etEquiposCalifican.setError(getString(R.string.alta_liga_error_no_numero));
                     esValido = false;
                 }
             }
         }
+
+        String generoLiga = getResources()
+                .getStringArray(R.array.generosValues)[spGenero.getSelectedItemPosition()];
+
+        if(Validaciones.estaVacio(generoLiga)){
+            TextView errorText = (TextView)spGenero.getSelectedView();
+            errorText.setError(Constantes.CADENA_VACIA);
+            errorText.setTextColor(Color.RED);
+            errorText.setText("Seleccione el genero de la liga");
+            errorText.requestFocus();
+            esValido = false;
+        }
+
+        String tipoTorneo = getResources()
+                .getStringArray(R.array.tipo_torneoValues)[spTipoTorneo.getSelectedItemPosition()];
+
+        if(Validaciones.estaVacio(tipoTorneo)){
+            TextView errorText = (TextView)spTipoTorneo.getSelectedView();
+            errorText.setError(Constantes.CADENA_VACIA);
+            errorText.setTextColor(Color.RED);
+            errorText.setText("Seleccione el tipo de torneo");
+            errorText.requestFocus();
+            esValido = false;
+        }
+
         return esValido;
     }
 
-    /** ---------------------------------- AltasView*/
+    /**
+     * ---------------------------------- AltasView
+     */
     @Override
     public void bloquearPantalla() {
         desactivarComponentes();
@@ -218,10 +352,10 @@ public class AltaLigaActivity extends AppCompatActivity implements AltasView {
         activarComponentes();
         cargando.dismiss();
     }
+
     @Override
     public void activarComponentes() {
         etNombre.setEnabled(true);
-        etJornadas.setEnabled(true);
         etEquiposCalifican.setEnabled(true);
         cbRepechaje.setEnabled(true);
         etRepechaje.setEnabled(true);
@@ -232,7 +366,6 @@ public class AltaLigaActivity extends AppCompatActivity implements AltasView {
     @Override
     public void desactivarComponentes() {
         etNombre.setEnabled(false);
-        etJornadas.setEnabled(false);
         etEquiposCalifican.setEnabled(false);
         cbRepechaje.setEnabled(false);
         etRepechaje.setEnabled(false);
@@ -276,4 +409,5 @@ public class AltaLigaActivity extends AppCompatActivity implements AltasView {
     public void mostrarError(int resMsg) {
         Toast.makeText(this, resMsg, Toast.LENGTH_LONG).show();
     }
+
 }

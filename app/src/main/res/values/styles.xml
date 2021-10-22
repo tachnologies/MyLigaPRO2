@@ -84,5 +84,26 @@
         <item name="android:layout_margin">@dimen/common_margen_chiquito</item>
     </style>
 
+    <style name="labelSpinner">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/common_tamanyo_label_spinner</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/secondary_text</item>
+    </style>
+
+    <style name="separador">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2dp</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="checkboxDerecha">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:button">@null</item>
+        <item name="android:drawableRight">?android:attr/listChoiceIndicatorMultiple</item>
+    </style>
 
 </resources>

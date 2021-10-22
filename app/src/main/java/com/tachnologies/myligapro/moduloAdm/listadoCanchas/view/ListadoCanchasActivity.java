@@ -70,13 +70,18 @@ public class ListadoCanchasActivity extends AppCompatActivity implements OnItemC
                 }
             }
         }
-        if(mAdapter.getItemCount() > 0 ){
+
+        /**
+         * ------------------------------------     NO QUITARRRRRRR!!!!!!
+         * posteriormente vere si es necesario que si se tiene 1 sola cancha se de clic solo
+         * esto x que es posible agregar mas canchas
+         * if(mAdapter.getItemCount() > 0 ){
             if(mAdapter.getItemCount() == 1){
                 onItemClick(mAdapter.getPrimero());
             }
         }else{
             System.out.println("No tienes canchas HOMS!! :V");
-        }
+        }*/
     }
 
     private void configAdapter(){
@@ -97,9 +102,9 @@ public class ListadoCanchasActivity extends AppCompatActivity implements OnItemC
         mSession.setNombreCanchaSel(item.getNombre());
 
         Intent intent = new Intent(this, ListadoLigasActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-        finish();
+        //finish();
     }
 
 }
