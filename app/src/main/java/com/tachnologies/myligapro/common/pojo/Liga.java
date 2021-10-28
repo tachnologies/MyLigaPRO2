@@ -1,9 +1,13 @@
 package com.tachnologies.myligapro.common.pojo;
 
+import com.tachnologies.myligapro.common.utils.Constantes;
 import com.tachnologies.myligapro.common.utils.Utilidades;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import com.google.firebase.database.Exclude;
 
 public class Liga implements Serializable {
@@ -11,7 +15,7 @@ public class Liga implements Serializable {
     private String uid;
     private String nombre;
     private List<String> dias;
-    private String urlFotoLogo;
+    private String urlFoto;
 
     /** Aqui podra tener el genero
      * V = Varonil
@@ -54,6 +58,41 @@ public class Liga implements Serializable {
         this.fechaAlta = Utilidades.fechaHoyFormateada();
     }
 
+    public Map<String, Object> getObjectoParaInsertar(){
+        Map<String, Object> valores = new HashMap<>();
+
+        valores.put(Constantes.NOMBRE, nombre);
+        valores.put(Constantes.DIAS, dias);
+        valores.put(Constantes.URL_FOTO, urlFoto);
+
+        valores.put(Constantes.GENERO, genero);
+        if(jornadaActual > 0){
+            valores.put(Constantes.JORNADA_ACTUAL, jornadaActual);
+        }
+        if(equiposCalifican > 0){
+            valores.put(Constantes.EQUIPOS_CALIFICAN, equiposCalifican);
+        }
+
+        valores.put(Constantes.EMPATE_PUNTO_EXTRA, empateJuegaPuntoExtra);
+
+        if(fechaAlta != null && !fechaAlta.isEmpty()){
+            valores.put(Constantes.FECHA_ALTA, fechaAlta);
+        }
+        if(usuarioAlta != null && !usuarioAlta.isEmpty()){
+            valores.put(Constantes.USUARIO_ALTA, usuarioAlta);
+        }
+        if(fechaModificacion != null && !fechaModificacion.isEmpty()){
+            valores.put(Constantes.FECHA_MODIFICACION, fechaModificacion);
+        }
+        if(usuarioModificacion != null && !usuarioModificacion.isEmpty()){
+            valores.put(Constantes.USUARIO_MODIFICACION, usuarioModificacion);
+        }
+        if(estatus != null && !estatus.isEmpty()){
+            valores.put(Constantes.ESTATUS, estatus);
+        }
+        return valores;
+    }
+
     @Exclude
     public String getUid() {
         return uid;
@@ -79,12 +118,12 @@ public class Liga implements Serializable {
         this.urlFotosLiga = urlFotosLiga;
     }
 */
-    public String getUrlFotoLogo() {
-        return urlFotoLogo;
+    public String getUrlFoto() {
+        return urlFoto;
     }
 
-    public void setUrlFotoLogo(String urlFotoLogo) {
-        this.urlFotoLogo = urlFotoLogo;
+    public void setUrlFotoLogo(String urlFoto) {
+        this.urlFoto = urlFoto;
     }
 
    /* public int getNumJornadas() {

@@ -17,7 +17,7 @@ import com.tachnologies.myligapro.common.pojo.ItemCanchaListado;
 import com.tachnologies.myligapro.common.pojo.ItemLigaListado;
 import com.tachnologies.myligapro.common.pojo.UsuarioAdmin;
 import com.tachnologies.myligapro.common.utils.Constantes;
-import com.tachnologies.myligapro.moduloAdm.AgregaEditaLigas;
+import com.tachnologies.myligapro.moduloAdm.agregaEditaLigas.view.AgregaEditaLigas;
 import com.tachnologies.myligapro.moduloAdm.listadoLigas.adapters.ItemLigaListadoAdapter;
 import com.tachnologies.myligapro.moduloAdm.listadoLigas.adapters.OnItemClickListener;
 import com.tachnologies.myligapro.moduloAdm.mainAdm.AdminActivity;

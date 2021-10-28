@@ -195,4 +195,11 @@
     <string name="borrar_jugador_titulo">Borrar Jugador</string>
     <string name="jugador_eliminado">Jugador Eliminado</string>
     <string name="eliminar_liga">Eliminar Liga</string>
+
+    <!--********************************************* Agrega Elimina Liga *********************************************-->
+    <string name="agrega_elimina_liga_titulo">Eliminar Liga</string>
+    <string name="agrega_elimina_liga_dialogo">¿Realmente desea eliminar la liga %s?, al realizar esto se borrara toda su informaci&#243;n relacionada</string>
+
+    <!--********************************************* /Agrega Elimina Liga *********************************************-->
+
 </resources>

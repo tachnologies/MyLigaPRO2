@@ -1,7 +1,6 @@
 package com.tachnologies.myligapro.moduloAdminJugadores.agregarEditar.view;
 
 import android.content.Intent;
-
 import com.tachnologies.myligapro.common.pojo.Jugador;
 
 public interface AgregarEditarJugadorView {

@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".moduloAdm.AgregaEditaLigas"
+        <activity android:name=".moduloAdm.agregaEditaLigas.view.AgregaEditaLigas"
             android:launchMode="singleInstance"/>
         <activity android:name=".moduloAdminJugadores.agregarEditar.view.AgregarEditarJugadorFragment" />
         <activity android:name=".moduloAdminJugadores.view.AdministrarJugadoresActivity"

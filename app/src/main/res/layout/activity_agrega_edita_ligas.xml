@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_marginLeft="@dimen/common_margen_mediano"
     android:layout_marginRight="@dimen/common_margen_mediano"
-    tools:context=".moduloAdm.AgregaEditaLigas">
+    tools:context=".moduloAdm.agregaEditaLigas.view.AgregaEditaLigas">
 
     <ScrollView
         android:id="@+id/sVMain"

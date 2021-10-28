@@ -82,6 +82,13 @@ public class FirebaseStorageAPI {
                 .child(uidJugador);
     }
 
+    public void eliminarFotoLiga(String urlFotoLiga){
+        StorageReference referencia = mFirebaseStorage.getReferenceFromUrl(urlFotoLiga);
+        if(referencia != null){
+            borrarSinCallback(referencia);
+        }
+    }
+
     public void borrarFotoEquipo(String uidCuenta, String uidCancha, String uidLiga,
                                     String uidEquipo){
         StorageReference referencia = getReferenciaEquipoPorUid(uidCuenta, uidCancha, uidLiga,
@@ -96,7 +103,8 @@ public class FirebaseStorageAPI {
 
         StorageReference referencia = mFirebaseStorage.getReferenceFromUrl(urlFotoJugador);
         if(referencia != null){
-            referencia.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            borrarSinCallback(referencia);
+            /*referencia.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
                 }
@@ -104,8 +112,15 @@ public class FirebaseStorageAPI {
                 @Override
                 public void onFailure(@NonNull Exception exception) {
                 }
-            });
+            });*/
         }
+    }
+
+    public void subirFotoLiga(String uidCuenta, String uidCancha, String uidLiga, Uri uriFoto,
+                              StorageUploadImageCallback callback){
+
+        final StorageReference referencia = getReferenciaLigaPorUid(uidCuenta, uidCancha, uidLiga);
+        guardarImagenConCallback(referencia, uriFoto, callback);
     }
 
     public void subirFotoJugador(String uidCuenta, String uidCancha, String uidLiga, String uidEquipo,

@@ -18,6 +18,7 @@ import com.tachnologies.myligapro.common.model.EventErrorTypeListener;
 import com.tachnologies.myligapro.common.pojo.Cuenta;
 import com.tachnologies.myligapro.common.pojo.Equipo;
 import com.tachnologies.myligapro.common.pojo.Jugador;
+import com.tachnologies.myligapro.common.pojo.Liga;
 import com.tachnologies.myligapro.common.pojo.RefEquipoDelegado;
 import com.tachnologies.myligapro.common.pojo.UsuarioAdmin;
 import com.tachnologies.myligapro.common.pojo.UsuarioDelegado;
@@ -74,6 +75,13 @@ public class FirebaseRealtimeDatabaseAPI {
 
     public DatabaseReference getReferenciaUsuarioDelPorUid(String uid){
         return mDatabaseReference.getRoot().child(Constantes.PATH_USUARIO_DEL).child(uid);
+    }
+
+    public DatabaseReference getReferenciaLigaPorId(String uidCuenta, String uidCancha, String uidLiga){
+        return mDatabaseReference.getRoot()
+                .child(Constantes.CUENTAS).child(uidCuenta)
+                .child(Constantes.PATH_CANCHAS).child(uidCancha)
+                .child(Constantes.PATH_LIGAS).child(uidLiga);
     }
 
     public DatabaseReference getReferenciaAEquipos(String uidCuenta, String uidCancha, String uidLiga){
@@ -195,6 +203,15 @@ public class FirebaseRealtimeDatabaseAPI {
 
     }
 
+    public void guardarLiga(Liga liga, String idCuenta, String idCancha,
+            final BasicErrorEventCallback callback){
+
+        Map<String, Object> valores = liga.getObjectoParaInsertar();
+        DatabaseReference referenciaLiga = getReferenciaLigaPorId(idCuenta, idCancha, liga.getUid());
+        guardar(referenciaLiga, valores, callback);
+
+    }
+
     public void guardarEquipo(Equipo equipo, String idCuenta, String idCancha, String idLiga,
                               final BasicErrorEventCallback callback){
 
@@ -255,6 +272,11 @@ public class FirebaseRealtimeDatabaseAPI {
 
     public void guardarSinCallback(DatabaseReference referencia, Map<String, Object> valores){
         referencia.updateChildren(valores);
+    }
+
+    public void eliminarLiga(String uidCuenta, String uidCancha, String uidLiga, final BasicErrorEventCallback callback){
+        DatabaseReference referencia = getReferenciaLigaPorId(uidCuenta, uidCancha, uidLiga);
+        eliminar(referencia, callback);
     }
 
     public void eliminarEquipo(String uidEquipo, String uidCuenta, String uidCancha, String uidLiga,

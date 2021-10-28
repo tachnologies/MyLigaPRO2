@@ -18,6 +18,11 @@ public class Constantes {
     public static final String LADA  = "lada";
     public static final String COMMON_MENU_ORIGEN  = "menuOrigen";
     public static final String APODO  = "apodo";
+    public static final String DIAS  = "dias";
+    public static final String GENERO = "genero";
+    public static final String JORNADA_ACTUAL = "jornadaActual";
+    public static final String EQUIPOS_CALIFICAN = "equiposCalifican";
+    public static final String EMPATE_PUNTO_EXTRA = "empateJuegaPuntoExtra";
     public static final String CADENA_VACIA  = "";
 
     public static final String USUARIO_ALTA = "usuarioAlta";
@@ -124,6 +129,7 @@ public class Constantes {
     public static final String ESTATUS_BAJA = "B";
 
     public static final String SP_LADAS = "sharedPreferencesLadas";
+
 
 
 }
