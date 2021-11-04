@@ -90,7 +90,8 @@ public class AdminActivity extends AppCompatActivity implements OnItemClickListe
         mAdapter.add(item);
         item = new ItemMenuAdm(getString(R.string.item_menu_editar_liga), R.drawable.trofeo,11);
         mAdapter.add(item);
-
+        item = new ItemMenuAdm(getString(R.string.item_menu_arbitraje), R.drawable.arbitro,12);
+        mAdapter.add(item);
     }
 
     private void configRecyclerView() {
@@ -145,6 +146,9 @@ public class AdminActivity extends AppCompatActivity implements OnItemClickListe
                 break;
             case 11:
                 Toast.makeText(this, "Editar Datos Liga proximamente", Toast.LENGTH_LONG).show();
+                break;
+            case 12:
+                Toast.makeText(this, "Arbitraje proximamente", Toast.LENGTH_LONG).show();
                 break;
             default:
                 Toast.makeText(this, "Ahhhh nu maaaa ese menu: " + item.getIdMenu() +" no staba", Toast.LENGTH_LONG).show();

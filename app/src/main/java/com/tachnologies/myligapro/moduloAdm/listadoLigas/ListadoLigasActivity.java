@@ -136,15 +136,16 @@ public class ListadoLigasActivity extends AppCompatActivity implements OnItemCli
         Intent intent = new Intent(this, AdminActivity.class);
         mSession.setIdLigaSel(item.getUid());
         mSession.setNombreLigaSel(item.getNombre());
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        mSession.setUrlLogoLigaSel(item.getUrlFoto());
+        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-        finish();
+        //finish();
     }
 
     @OnClick(R.id.btnNuevo)
     public void onViewClicked() {
         Intent intent = new Intent(this, AgregaEditaLigas.class);
-        intent.putExtra(Constantes.ES_NUEVO, true);
+        intent.putExtra(Constantes.ES_EDITAR, false);
         //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         //finish();

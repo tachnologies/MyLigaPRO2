@@ -13,6 +13,7 @@ import com.tachnologies.myligapro.common.model.dataSession.AdmSession;
 import com.tachnologies.myligapro.common.pojo.CuentaAdminInvitado;
 import com.tachnologies.myligapro.common.pojo.ItemCanchaListado;
 import com.tachnologies.myligapro.common.pojo.UsuarioAdmin;
+import com.tachnologies.myligapro.common.utils.Constantes;
 import com.tachnologies.myligapro.moduloAdm.listadoCanchas.view.adapters.ItemCanchaListadoAdapter;
 import com.tachnologies.myligapro.moduloAdm.listadoCanchas.view.adapters.OnItemClickListener;
 import com.tachnologies.myligapro.moduloAdm.listadoLigas.ListadoLigasActivity;
@@ -103,6 +104,7 @@ public class ListadoCanchasActivity extends AppCompatActivity implements OnItemC
 
         Intent intent = new Intent(this, ListadoLigasActivity.class);
         //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
         startActivity(intent);
         //finish();
     }

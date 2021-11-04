@@ -7,7 +7,7 @@ public interface AgregaEditaLigasView {
     void bloquearPantalla();
 
     void ligaGuardada();
-    void guardarLiga(String urlFotoJugador);
+    void guardarLiga(String urlFotoLiga);
     void ligaEliminada();
     void mostrarError(int resMsg);
     void setImagen(Intent data);

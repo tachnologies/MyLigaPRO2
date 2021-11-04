@@ -379,7 +379,7 @@ public class AltaLigaActivity extends AppCompatActivity implements AltasView {
         mSession.setIdCuentaSel(uidCuenta);
 
         Map<String, ItemLigaListado> itemsLiga = new HashMap<String, ItemLigaListado>();
-        ItemLigaListado itemLiga = new ItemLigaListado(liga.getUid(), liga.getNombre(), liga.getUrlFotoLogo());
+        ItemLigaListado itemLiga = new ItemLigaListado(liga.getUid(), liga.getNombre(), liga.getUrlFoto());
         itemsLiga.put(liga.getUid(), itemLiga);
 
         Map<String, ItemCanchaListado> itemsCancha = new HashMap<String, ItemCanchaListado>();

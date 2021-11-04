@@ -144,6 +144,7 @@
                 />
 
             <TextView
+                android:id="@+id/tvDias"
                 style="@style/labelSpinner"
                 android:text="@string/common_dias"
                 android:layout_marginTop="@dimen/common_margen_chiquito"/>
@@ -191,6 +192,32 @@
 
             <View style="@style/separador"/>
 
+            <LinearLayout
+                android:id="@+id/llEquiposCalifican"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_margen_chiquito">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEquiposCalifican"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="true"
+                        android:gravity="center"
+                        android:hint="@string/alta_liga_equipos_califican"
+                        android:inputType="number"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View style="@style/separador"/>
+            </LinearLayout>
+
         <LinearLayout
             android:id="@+id/llRepechaje"
             android:layout_width="match_parent"
@@ -223,33 +250,6 @@
 
             <View style="@style/separador"/>
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/llEquiposCalifican"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone">
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/common_margen_chiquito">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etEquiposCalifican"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:enabled="true"
-                        android:gravity="center"
-                        android:hint="@string/alta_liga_equipos_califican"
-                        android:inputType="number"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <View style="@style/separador"/>
-            </LinearLayout>
-
 
             <CheckBox
                 android:id="@+id/cbEmpatePuntoExtra"

@@ -192,6 +192,25 @@
 
             <View style="@style/separador"/>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tlEquiposCalifican"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_margen_chiquito">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEquiposCalifican"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="true"
+                    android:gravity="center"
+                    android:hint="@string/alta_liga_equipos_califican"
+                    android:inputType="number"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View style="@style/separador"/>
+
             <CheckBox
                 android:id="@+id/cbRepechaje"
                 android:text="@string/alta_liga_cb_repechaje"
@@ -218,25 +237,6 @@
 
             <View style="@style/separador"/>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tlEquiposCalifican"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/common_margen_chiquito">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEquiposCalifican"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="true"
-                    android:gravity="center"
-                    android:hint="@string/alta_liga_equipos_califican"
-                    android:inputType="number"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <View style="@style/separador"/>
-
             <CheckBox
                 android:id="@+id/cbEmpatePuntoExtra"
                 android:text="@string/alta_liga_empate_pt_extra"
@@ -250,12 +250,5 @@
                 android:layout_marginTop="@dimen/common_margen_chiquito"
                 android:layout_gravity="center"/>
         </LinearLayout>
-
-
-
     </ScrollView>
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

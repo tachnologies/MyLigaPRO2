@@ -36,8 +36,17 @@ public class Constantes {
     public static final String COMMON_MASCULINO_VALUE  = "M";
     public static final String COMMON_FEMENINO_VALUE  = "F";
     public static final String COMMON_MIXTO_VALUE  = "MIX";
-
+    public static final String ES_EDITAR = "esEditar";
+    public static final String TIPO_TORNEO = "tipoTorneo";
     public static final String ESTATUS =    "estatus";
+
+    public static final String DIA_LUNES     =    "L";
+    public static final String DIA_MARTES    =    "M";
+    public static final String DIA_MIERCOLES =    "MI";
+    public static final String DIA_JUEVES    =    "J";
+    public static final String DIA_VIERNES   =    "V";
+    public static final String DIA_SABADO    =    "S";
+    public static final String DIA_DOMINGO   =    "D";
 
     public static final String UID_CUENTA  = "uidCuenta";
     public static final String UID_CANCHA  = "uidCancha";
@@ -129,7 +138,5 @@ public class Constantes {
     public static final String ESTATUS_BAJA = "B";
 
     public static final String SP_LADAS = "sharedPreferencesLadas";
-
-
 
 }

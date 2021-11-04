@@ -183,7 +183,7 @@ public class NuevoEquipoActivity extends AppCompatActivity implements NuevoEquip
                 break;
             case R.id.btnCancelar:
                 Intent intent = new Intent(this, EquiposAdm.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
                 break;

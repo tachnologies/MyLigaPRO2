@@ -1,7 +1,9 @@
 package com.tachnologies.myligapro.moduloAdm.agregaEditaLigas.view;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Instrumentation;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,6 +22,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
@@ -38,12 +44,20 @@ import com.tachnologies.myligapro.common.utils.Utilidades;
 import com.tachnologies.myligapro.common.utils.Validaciones;
 import com.tachnologies.myligapro.moduloAdm.agregaEditaLigas.AgregaEditaLigasPresenter;
 import com.tachnologies.myligapro.moduloAdm.agregaEditaLigas.AgregaEditaLigasPresenterClass;
+import com.tachnologies.myligapro.moduloAdm.listadoLigas.ListadoLigasActivity;
+import com.tachnologies.myligapro.moduloAdm.mainAdm.AdminActivity;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AgregaEditaLigas extends AppCompatActivity implements AgregaEditaLigasView{
+public class AgregaEditaLigas extends AppCompatActivity implements AgregaEditaLigasView {
 
     @BindView(R.id.tvTitulo)
     TextView tvTitulo;
@@ -103,11 +117,11 @@ public class AgregaEditaLigas extends AppCompatActivity implements AgregaEditaLi
     Button btnEliminar;
     @BindView(R.id.tlRepechaje)
     TextInputLayout tlRepechaje;
+    @BindView(R.id.tvDias)
+    TextView tvDias;
 
-    /** para lo del gif */
+    /**para lo del gif*/
     private CargandoDialog cargando;
-    private boolean esNuevo;
-    //private AdmSession mSession;
     /**para la foto del equipo*/
     private Uri uriFoto;
     /**para diferenciar si se edita o agrega*/
@@ -117,24 +131,52 @@ public class AgregaEditaLigas extends AppCompatActivity implements AgregaEditaLi
     private AgregaEditaLigasPresenter mPresenter;
     private Liga ligaEditar;
 
+    /**Para la foto de la galeria */
+    ActivityResultLauncher<String> mGetContent;
+
+    ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+        new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult result) {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    Intent intent = result.getData();
+                    setImagen(intent);
+                }
+            }
+        });
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agrega_edita_ligas);
         ButterKnife.bind(this);
 
-        mPresenter = new AgregaEditaLigasPresenterClass(this);
-        esNuevo = (boolean) getIntent().getSerializableExtra(Constantes.ES_NUEVO);
+        mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
+            @Override
+            public void onActivityResult(Uri uriImagen) {
+                if(uriImagen != null){
+                    setImagen(uriImagen);
+                }
+            }
+        });
 
-        if(esNuevo){
-            tvTitulo.setText(R.string.alta_liga_titulo);
-        }else{
+        cargando = new CargandoDialog();
+        mPresenter = new AgregaEditaLigasPresenterClass(this);
+        esEditar = (boolean) getIntent().getSerializableExtra(Constantes.ES_EDITAR);
+        ligaEditar = new Liga();
+
+        if (esEditar) {
             tvTitulo.setText(R.string.editar_liga_titulo);
+            AdmSession mSession = AdmSession.getInstance();
+            String idLiga = mSession.getIdLigaSel();
+            bloquearPantalla();
+            //consultar equipo
+
+        } else {
+            tvTitulo.setText(R.string.alta_liga_titulo);
         }
 
         //mSession = AdmSession.getInstance();
-        cargando = new CargandoDialog();
-
         tvDescTipoTorneo.setText(Constantes.CADENA_VACIA);
 
         spTipoTorneo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -162,12 +204,6 @@ public class AgregaEditaLigas extends AppCompatActivity implements AgregaEditaLi
                             llEquiposCalifican.setVisibility(View.VISIBLE);
                             cbEmpatePuntoExtra.setVisibility(View.VISIBLE);
                             break;
-                        case Constantes.TIPO_LIGA_ELIMINATORIA:         //E
-                            descripcionTorneo = getString(R.string.alta_liga_eliminatoria_descripcion);
-                            llRepechaje.setVisibility(View.GONE);
-                            llEquiposCalifican.setVisibility(View.GONE);
-                            cbEmpatePuntoExtra.setVisibility(View.GONE);
-                            break;
                         default:
                     }
                     tvDescTipoTorneo.setText(descripcionTorneo);
@@ -187,8 +223,26 @@ public class AgregaEditaLigas extends AppCompatActivity implements AgregaEditaLi
 
     }
 
+    private void setImagen(Uri urlImagen) {
+        System.out.println("--------------------- set Imagen");
+        System.out.println("--------------------- deberia poner la foto");
+        //Bundle bundle = data.getExtras();
+        uriFoto = urlImagen;
+        /*if (bundle == null || bundle.isEmpty()) {
+            uriFoto = Uri.parse(data.getDataString());
+        }*/
+
+        int sizeImagePreview = getResources().getDimensionPixelSize(R.dimen.nuevo_equipo_alto_img);
+        Bitmap bitmap = Utilidades.reducirBitmap(this, contentMain, uriFoto,
+                sizeImagePreview, sizeImagePreview);
+
+        if (bitmap != null) {
+            imgFoto.setImageBitmap(bitmap);
+        }
+    }
+
     @OnClick({R.id.imgBorrarFoto, R.id.imgDesdeGaleria, R.id.cbLimJugadores,
-            R.id.cbRepechaje, R.id.cbEmpatePuntoExtra, R.id.btnGuardar, R.id.btnCancelar,
+            R.id.cbRepechaje, R.id.btnGuardar, R.id.btnCancelar,
             R.id.btnEliminar})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -214,11 +268,38 @@ public class AgregaEditaLigas extends AppCompatActivity implements AgregaEditaLi
                     etRepechaje.setText(Constantes.CADENA_VACIA);
                 }
                 break;
-            case R.id.cbEmpatePuntoExtra:
-                break;
             case R.id.btnGuardar:
+                if (validar()) {
+                    bloquearPantalla();
+                    if (uriFoto == null) {
+                        if (esEditar) {
+                            if (teniaFoto) {
+                                eliminarFotoLiga();
+                            }
+                            guardarLiga();
+                        } else {
+                            String stringTimestamp = Utilidades.obtenerStringTimestamp();
+                            String uidLiga = "L-" + stringTimestamp;
+                            ligaEditar.setUid(uidLiga);
+                            guardarLiga();
+                        }
+                    } else {
+                        if(!esEditar){
+                            String uidLiga = new SimpleDateFormat("ddMMyyyyHHmmssSSS", Locale.ROOT)
+                                    .format(new Date());
+
+                            ligaEditar.setUid(uidLiga);
+                            guardarLiga();
+                        }
+                        subirFotoLiga();
+                    }
+                }
                 break;
             case R.id.btnCancelar:
+                Intent intent = new Intent(this, ListadoLigasActivity.class);
+                //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
                 break;
             case R.id.btnEliminar:
                 alertEliminarLiga();
@@ -227,22 +308,107 @@ public class AgregaEditaLigas extends AppCompatActivity implements AgregaEditaLi
         }
     }
 
-    private void alertEliminarLiga(){
+    private boolean validar() {
+        boolean esValido = true;
+
+        String tipoTorneo = getResources()
+                .getStringArray(R.array.tipo_torneoValues)[spTipoTorneo.getSelectedItemPosition()];
+
+        if (Constantes.TIPO_LIGA_LIGAYELIMINATORIA.equals(tipoTorneo)) {
+            if (cbRepechaje.isChecked()) {
+                String etNumRepechaje = etRepechaje.getText().toString();
+                if (Validaciones.esNumerico(etNumRepechaje)) {
+                    int numEquiposRepechaje = Integer.parseInt(etNumRepechaje);
+                    if (numEquiposRepechaje <= 0) {
+                        etRepechaje.setError(getString(R.string.agrega_elim_liga_error_numero_mayor_cero));
+                        etRepechaje.requestFocus();
+                        esValido = false;
+                    }
+                } else {
+                    etRepechaje.setError(getString(R.string.agrega_elim_liga_error_no_numerico));
+                    etRepechaje.requestFocus();
+                    esValido = false;
+                }
+            }
+
+            String etNumEqCalifican = etEquiposCalifican.getText().toString();
+            if (Validaciones.esNumerico(etNumEqCalifican)) {
+                int numEqCalifican = Integer.parseInt(etNumEqCalifican);
+                if (numEqCalifican <= 0) {
+                    etEquiposCalifican.setError(getString(R.string.agrega_elim_liga_error_numero_mayor_cero));
+                    etEquiposCalifican.requestFocus();
+                    esValido = false;
+                }
+            } else {
+                etEquiposCalifican.setError(getString(R.string.agrega_elim_liga_error_no_numerico));
+                etEquiposCalifican.requestFocus();
+                esValido = false;
+            }
+        }
+
+        if (!cbLunes.isChecked() && !cbMartes.isChecked() && !cbMiercoles.isChecked() &&
+                !cbJueves.isChecked() && !cbViernes.isChecked() && !cbSabado.isChecked() &&
+                !cbDomingo.isChecked()) {
+            tvDias.setError(getString(R.string.agrega_elim_liga_error_no_dias));
+            tvDias.requestFocus();
+            esValido = false;
+        }
+
+        if (cbLimJugadores.isChecked()) {
+            String etNumJugadores = etLimJugadores.getText().toString();
+            if (Validaciones.esNumerico(etNumJugadores)) {
+                int numJugadores = Integer.parseInt(etNumJugadores);
+                if (numJugadores <= 0) {
+                    etLimJugadores.setError(getString(R.string.agrega_elim_liga_error_numero_mayor_cero));
+                    etLimJugadores.requestFocus();
+                    esValido = false;
+                }
+            } else {
+                etLimJugadores.setError(getString(R.string.agrega_elim_liga_error_no_numerico));
+                etLimJugadores.requestFocus();
+                esValido = false;
+            }
+        }
+
+        if (Validaciones.estaVacio(tipoTorneo)) {
+            Toast.makeText(this, R.string.agrega_elim_liga_error_no_tipo_liga, Toast.LENGTH_LONG).show();
+            spTipoTorneo.requestFocus();
+            esValido = false;
+        }
+
+        String genero = getResources()
+                .getStringArray(R.array.generos)[spGenero.getSelectedItemPosition()];
+        if (Validaciones.estaVacio(genero)) {
+            Toast.makeText(this, R.string.agrega_elim_liga_error_no_genero, Toast.LENGTH_LONG).show();
+            spGenero.requestFocus();
+            esValido = false;
+        }
+
+        if (Validaciones.estaVacio(etNombre.getText().toString())) {
+            etNombre.setError(getString(R.string.agrega_elim_liga_error_sin_nombre));
+            etNombre.requestFocus();
+            esValido = false;
+        }
+
+        return esValido;
+    }
+
+    private void alertEliminarLiga() {
         Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        if (vibrator != null){
+        if (vibrator != null) {
             vibrator.vibrate(100);
         }
 
         new AlertDialog.Builder(this)
                 .setTitle(R.string.agrega_elimina_liga_titulo)
-                .setMessage(getString( R.string.agrega_elimina_liga_dialogo,
+                .setMessage(getString(R.string.agrega_elimina_liga_dialogo,
                         ligaEditar.getNombre()))
                 .setPositiveButton(R.string.common_borrar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         bloquearPantalla();
 
-                        if(teniaFoto){
+                        if (teniaFoto) {
                             eliminarFotoLiga();
                         }
 
@@ -253,8 +419,13 @@ public class AgregaEditaLigas extends AppCompatActivity implements AgregaEditaLi
                 .show();
     }
 
-    private void eliminarFotoLiga(){
+    private void eliminarFotoLiga() {
+        mPresenter.eliminarFotoLiga(ligaEditar.getUrlFoto());
+        ligaEditar.setUrlFoto("");
+    }
 
+    private void subirFotoLiga() {
+        mPresenter.subirFotoLiga(ligaEditar.getUid(), uriFoto);
     }
 
     private void limpiarFoto() {
@@ -264,12 +435,20 @@ public class AgregaEditaLigas extends AppCompatActivity implements AgregaEditaLi
                 .centerCrop();
 
         Glide.with(this)
-                .load(R.drawable.jugador)
+                .load(R.drawable.trofeo_2)
                 .apply(options)
                 .into(imgFoto);
     }
 
+    /**@Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        System.out.println("----------------------------- onActivityResult");
+        super.onActivityResult(requestCode, resultCode, data);
+        mPresenter.resultadoActivity(requestCode, resultCode, data);
+    }*/
+
     private void permisosGaleria() {
+        System.out.println("----------------------------------permisosGaleria");
         mPresenter.checarPermisos(Manifest.permission.READ_EXTERNAL_STORAGE, Constantes.RP_STORAGE,
                 getBaseContext(), this);
     }
@@ -287,17 +466,113 @@ public class AgregaEditaLigas extends AppCompatActivity implements AgregaEditaLi
 
     @Override
     public void ligaGuardada() {
+        //aqui redireccionar al menuAdm y setear el id de la liga en admSession
+        desbloquearPantalla();
+        AdmSession mSession = AdmSession.getInstance();
+        mSession.setIdLigaSel(ligaEditar.getUid());
 
+        Intent intent = new Intent(this, AdminActivity.class);
+        mSession.setIdLigaSel(ligaEditar.getUid());
+        mSession.setNombreLigaSel(ligaEditar.getNombre());
+        mSession.setUrlLogoLigaSel(ligaEditar.getUrlFoto());
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        //finish();
     }
 
     @Override
-    public void guardarLiga(String urlFotoJugador) {
+    public void guardarLiga(String urlFotoLiga) {
+        ligaEditar.setUrlFoto(urlFotoLiga);
+        guardarLiga();
+        //este se usa para cuando regresa de guardar la imagen de la liga
+        //despues va a llamar al metodo guardarLiga para hacer eso psssss guardar la liga wey :v
+    }
 
+    public void guardarLiga() {
+        String tipoTorneo = getResources()
+                .getStringArray(R.array.tipo_torneoValues)[spTipoTorneo.getSelectedItemPosition()];
+
+        ligaEditar.setTipoTorneo(tipoTorneo);
+
+        if (Constantes.TIPO_LIGA_LIGAYELIMINATORIA.equals(tipoTorneo)) {
+            if (cbRepechaje.isChecked()) {
+                int numEquiposRepechaje = Integer.parseInt(etRepechaje.getText().toString());
+                ligaEditar.setHayRepechaje(true);
+                ligaEditar.setEquiposRepechaje(numEquiposRepechaje);
+            }else{
+                ligaEditar.setHayRepechaje(false);
+            }
+
+            int numEqCalifican = Integer.parseInt(etEquiposCalifican.getText().toString());
+            ligaEditar.setEquiposCalifican(numEqCalifican);
+        }
+
+        List<String> dias = new ArrayList<String>();
+        if(cbLunes.isChecked()){
+            dias.add(Constantes.DIA_LUNES);
+        }
+        if(cbMartes.isChecked()){
+            dias.add(Constantes.DIA_MARTES);
+        }
+        if(cbMiercoles.isChecked()){
+            dias.add(Constantes.DIA_MIERCOLES);
+        }
+        if(cbJueves.isChecked()){
+            dias.add(Constantes.DIA_JUEVES);
+        }
+        if(cbViernes.isChecked()){
+            dias.add(Constantes.DIA_VIERNES);
+        }
+        if(cbSabado.isChecked()){
+            dias.add(Constantes.DIA_SABADO);
+        }
+        if(cbDomingo.isChecked()){
+            dias.add(Constantes.DIA_DOMINGO);
+        }
+
+        ligaEditar.setDias(dias);
+        if (cbLimJugadores.isChecked()) {
+            int numJugadores = Integer.parseInt(etLimJugadores.getText().toString());
+            ligaEditar.setTieneLimiteRegistros(true);
+            ligaEditar.setCantidadRegistros(numJugadores);
+        }else{
+            ligaEditar.setTieneLimiteRegistros(false);
+        }
+
+        String genero = getResources()
+                .getStringArray(R.array.generos)[spGenero.getSelectedItemPosition()];
+
+        ligaEditar.setGenero(genero);
+
+        ligaEditar.setNombre(etNombre.getText().toString());
+
+        if(ligaEditar.getUrlFoto() != null && !Validaciones.estaVacio(ligaEditar.getUrlFoto())){
+            teniaFoto = true;
+        }else{
+            teniaFoto = false;
+        }
+
+        mPresenter.guardarLiga(ligaEditar);
     }
 
     @Override
     public void ligaEliminada() {
-
+        //creo este llega despues de eliminada la liga y se tendra que salir hasta el listado de ligas,
+        //OJOOO aqui hay que dejar limpio AdmSession unicamente contendra al admin logeado
+        //y con banderas que eliminan la pila de actividades
+        desbloquearPantalla();
+        AdmSession mSession = AdmSession.getInstance();
+        mSession.setIdLigaSel("");
+        mSession.setNombreLigaSel("");
+        mSession.setUrlLogoLigaSel("");
+        mSession.setIdEquipoSel("");
+        mSession.setNombreEquipoSel("");
+        mSession.setUrlLogoEquipoSel("");
+        //aqui se hace la redireccion
+        Intent intent = new Intent(this, ListadoLigasActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 
     @Override
@@ -308,6 +583,8 @@ public class AgregaEditaLigas extends AppCompatActivity implements AgregaEditaLi
 
     @Override
     public void setImagen(Intent data) {
+        System.out.println("--------------------- set Imagen");
+        System.out.println("--------------------- deberia poner la foto");
         Bundle bundle = data.getExtras();
         uriFoto = Uri.parse("");
         if (bundle == null || bundle.isEmpty()) {
@@ -325,8 +602,12 @@ public class AgregaEditaLigas extends AppCompatActivity implements AgregaEditaLi
 
     @Override
     public void abrirGaleria() {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(intent, Constantes.RC_FOTO_EQUIPO_PICKER);
+        System.out.println("----------------------------------abrirGaleria");
+        //Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        //startActivityForResult(intent, Constantes.RC_FOTO_EQUIPO_PICKER);
+
+        //mGetContent.launch("image/*");
+        mStartForResult.launch(new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI));
     }
 
     @Override

@@ -71,14 +71,20 @@ public class AgregaEditaLigasPresenterClass implements AgregaEditaLigasPresenter
 
     @Override
     public void resultadoActivity(int requestCode, int resultCode, Intent data) {
+        System.out.println("----------------------------------resultadoActivity");
         if(resultCode == Activity.RESULT_OK){
+            System.out.println("----------------------------------Activity.RESULT_OK");
             switch(requestCode){
                 case Constantes.RC_FOTO_EQUIPO_PICKER:
+                    System.out.println("----------------------------------RC_FOTO_EQUIPO_PICKER");
                     mView.setImagen(data);
                     break;
                 default:
                     break;
             }
+        }else{
+            System.out.println("----------------------------------distinto a Activity.RESULT_OK");
+            System.out.println("----------------------------------resultCode: " + resultCode);
         }
     }
 

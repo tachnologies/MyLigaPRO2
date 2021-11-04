@@ -52,7 +52,7 @@
     </string-array>
 
     <string-array name="generosValues" >
-        <item></item>
+        <item> </item>
         <item>M</item>
         <item>F</item>
         <item>MIX</item>
@@ -63,14 +63,12 @@
         <item>@string/common_seleccione</item>
         <item>@string/alta_liga_torneo_liga</item>
         <item>@string/alta_liga_torneo_liga_eliminatoria</item>
-        <item>@string/alta_liga_eliminatoria</item>
     </string-array>
 
     <string-array name="tipo_torneoValues" >
         <item></item>
         <item>T</item>
         <item>L</item>
-        <item>E</item>
     </string-array>
 
 </resources>

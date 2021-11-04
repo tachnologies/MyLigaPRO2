@@ -142,7 +142,7 @@
     <string name="item_menu_mi_equipo">Mi Equipo</string>
     <string name="item_menu_mis_jugadores">Mis Jugadores</string>
     <string name="item_menu_fanstats">FanStats</string>
-
+    <string name="item_menu_arbitraje">Arbitraje</string>
     <!--********************************************* /Textos menus ADM *********************************************-->
 
     <!--********************************************* Equipos ADM *********************************************-->
@@ -199,7 +199,12 @@
     <!--********************************************* Agrega Elimina Liga *********************************************-->
     <string name="agrega_elimina_liga_titulo">Eliminar Liga</string>
     <string name="agrega_elimina_liga_dialogo">¿Realmente desea eliminar la liga %s?, al realizar esto se borrara toda su informaci&#243;n relacionada</string>
-
+    <string name="agrega_elim_liga_error_sin_nombre">Nombre de liga requerido</string>
+    <string name="agrega_elim_liga_error_no_numerico">El dato debe ser un n&#250;mero entero</string>
+    <string name="agrega_elim_liga_error_numero_mayor_cero">El n&#250;mero debe ser mayor a 0</string>
+    <string name="agrega_elim_liga_error_no_dias">Es necesario seleccionar al menos un d&#237;a</string>
+    <string name="agrega_elim_liga_error_no_genero">Seleccione un genero para su liga</string>
+    <string name="agrega_elim_liga_error_no_tipo_liga">Seleccione el tipo de su liga</string>
     <!--********************************************* /Agrega Elimina Liga *********************************************-->
 
 </resources>

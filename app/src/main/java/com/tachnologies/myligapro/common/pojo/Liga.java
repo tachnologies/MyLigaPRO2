@@ -22,6 +22,11 @@ public class Liga implements Serializable {
      * F = Femenil
      * M = Mixto*/
     private String genero;
+    /** Aqui podra tener el tipo de torneo
+     * T=torneo primer lugar es campeon
+     * L=liga con finales
+     * */
+    private String tipoTorneo;
     //private int numJornadas;
     private int jornadaActual;
     private int equiposCalifican;
@@ -66,6 +71,7 @@ public class Liga implements Serializable {
         valores.put(Constantes.URL_FOTO, urlFoto);
 
         valores.put(Constantes.GENERO, genero);
+        valores.put(Constantes.TIPO_TORNEO, tipoTorneo);
         if(jornadaActual > 0){
             valores.put(Constantes.JORNADA_ACTUAL, jornadaActual);
         }
@@ -109,47 +115,25 @@ public class Liga implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    /*public List<String> getUrlFotosLiga() {
-        return urlFotosLiga;
-    }
-
-    public void setUrlFotosLiga(List<String> urlFotosLiga) {
-        this.urlFotosLiga = urlFotosLiga;
-    }
-*/
     public String getUrlFoto() {
         return urlFoto;
     }
 
-    public void setUrlFotoLogo(String urlFoto) {
+    public void setUrlFoto(String urlFoto) {
         this.urlFoto = urlFoto;
     }
-
-   /* public int getNumJornadas() {
-        return numJornadas;
-    }
-
-    public void setNumJornadas(int numJornadas) {
-        this.numJornadas = numJornadas;
-    }*/
-
     public int getJornadaActual() {
         return jornadaActual;
     }
-
     public void setJornadaActual(int jornadaActual) {
         this.jornadaActual = jornadaActual;
     }
-
     public int getEquiposCalifican() {
         return equiposCalifican;
     }
-
     public void setEquiposCalifican(int equiposCalifican) {
         this.equiposCalifican = equiposCalifican;
     }
-
     /*public boolean isFinalEsFecha1() {
         return finalEsFecha1;
     }
@@ -157,131 +141,99 @@ public class Liga implements Serializable {
     public void setFinalEsFecha1(boolean finalEsFecha1) {
         this.finalEsFecha1 = finalEsFecha1;
     }*/
-
     public boolean isEmpateJuegaPuntoExtra() {
         return empateJuegaPuntoExtra;
     }
-
     public void setEmpateJuegaPuntoExtra(boolean empateJuegaPuntoExtra) {
         this.empateJuegaPuntoExtra = empateJuegaPuntoExtra;
     }
-
     public List<Equipo> getEquipos() {
         return equipos;
     }
-
     public void setEquipos(List<Equipo> equipos) {
         this.equipos = equipos;
     }
-
     public List<Sancionado> getSancionados() {
         return sancionados;
     }
-
     public void setSancionados(List<Sancionado> sancionados) {
         this.sancionados = sancionados;
     }
-
     public List<Goleadores> getGoleo() {
         return goleo;
     }
-
     public void setGoleo(List<Goleadores> goleo) {
         this.goleo = goleo;
     }
-
     public List<Jornada> getJornadas() {
         return jornadas;
     }
-
     public void setJornadas(List<Jornada> jornadas) {
         this.jornadas = jornadas;
     }
-
     public List<Nota> getNotas() {
         return notas;
     }
-
     public void setNotas(List<Nota> notas) {
         this.notas = notas;
     }
-
     public List<String> getAdminsInvitados() {
         return adminsInvitados;
     }
-
     public void setAdminsInvitados(List<String> adminsInvitados) {
         this.adminsInvitados = adminsInvitados;
     }
-
     public boolean isTieneLimiteRegistros() {
         return tieneLimiteRegistros;
     }
-
     public void setTieneLimiteRegistros(boolean tieneLimiteRegistros) {
         this.tieneLimiteRegistros = tieneLimiteRegistros;
     }
-
     public int getCantidadRegistros() {
         return cantidadRegistros;
     }
-
     public void setCantidadRegistros(int cantidadRegistros) {
         this.cantidadRegistros = cantidadRegistros;
     }
-
     public boolean isHayRepechaje() {
         return hayRepechaje;
     }
-
     public void setHayRepechaje(boolean hayRepechaje) {
         this.hayRepechaje = hayRepechaje;
     }
-
     public String getEstatus() {
         return estatus;
     }
-
     public void setEstatus(String estatus) {
         this.estatus = estatus;
     }
-
     public int getEquiposRepechaje() {
         return equiposRepechaje;
     }
-
     public void setEquiposRepechaje(int equiposRepechaje) {
         this.equiposRepechaje = equiposRepechaje;
     }
-
     public String getFechaAlta() {
         return fechaAlta;
     }
-
     public void setFechaAlta(String fechaAlta) {
         this.fechaAlta = fechaAlta;
     }
-
     public String getUsuarioAlta() {
         return usuarioAlta;
     }
-
     public void setUsuarioAlta(String usuarioAlta) {
         this.usuarioAlta = usuarioAlta;
     }
-
     public String getFechaModificacion() {
         return fechaModificacion;
     }
-
     public void setFechaModificacion(String fechaModificacion) {
         this.fechaModificacion = fechaModificacion;
     }
-
     public String getUsuarioModificacion() {
         return usuarioModificacion;
     }
-
     public void setUsuarioModificacion(String usuarioModificacion) {
         this.usuarioModificacion = usuarioModificacion;
     }
@@ -297,16 +249,19 @@ public class Liga implements Serializable {
     public List<String> getDias() {
         return dias;
     }
-
     public void setDias(List<String> dias) {
         this.dias = dias;
     }
-
     public String getGenero() {
         return genero;
     }
-
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+    public String getTipoTorneo() {
+        return tipoTorneo;
+    }
+    public void setTipoTorneo(String tipoTorneo) {
+        this.tipoTorneo = tipoTorneo;
     }
 }
